@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignalBox - Analyzing Data</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mint: { 50: '#F2FBF7', 100: '#E6F8EF', 200: '#D1FAE5', 500: '#10B981', 600: '#059669' },
+                        charcoal: '#1E293B',
+                        slate: '#64748B',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 30px rgba(0, 0, 0, 0.03)',
+                        'card': '0 20px 40px -10px rgba(0, 0, 0, 0.05)',
+                        'glow': '0 0 20px rgba(16, 185, 129, 0.3)',
+                    },
+                    animation: {
+                        'spin-slow': 'spin 3s linear infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            /* Mint Fog Gradient */
+            background: radial-gradient(circle at 50% -20%, #E6F8EF 0%, #F8FAFC 50%, #ffffff 80%);
+            min-height: 100vh;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Checkbox transition */
+        .step-icon {
+            transition: all 0.5s ease;
+        }
+        
+        .step-text {
+            transition: color 0.3s ease;
+        }
+    </style>
+</head>
+<body class="text-charcoal antialiased selection:bg-mint-200 selection:text-mint-600">
+
+    <nav class="fixed top-0 w-full z-50 glass-nav h-16">
+        <div class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 font-heading font-bold text-lg tracking-tight text-charcoal">
+                SignalBox<span class="w-2 h-2 rounded-full bg-mint-500"></span>
+            </a>
+
+            <div class="flex items-center gap-6">
+                <button class="text-slate-400 hover:text-charcoal transition-colors cursor-default">
+                    <i class="ph ph-bell text-xl"></i>
+                </button>
+                <button class="flex items-center gap-3 cursor-default">
+                    <div class="w-8 h-8 rounded-full bg-mint-100 border border-mint-200 flex items-center justify-center text-mint-700 text-xs font-bold">
+                        TB
+                    </div>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-28 pb-20 px-6 flex flex-col items-center justify-center min-h-screen">
+
+        <div class="mb-6 fade-in">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint-50 border border-mint-100 text-xs font-bold uppercase tracking-wide text-mint-700 shadow-sm">
+                <i class="ph ph-arrows-clockwise animate-spin"></i>
+                Connecting source
+            </span>
+        </div>
+
+        <div class="text-center mb-10 max-w-lg">
+            <h1 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-3 transition-all duration-500" id="main-heading">
+                We’re analyzing your inbox
+            </h1>
+            <p class="text-slate-500 text-lg leading-relaxed transition-all duration-500" id="sub-heading">
+                This usually takes less than a minute. You can safely leave this page.
+            </p>
+        </div>
+
+        <div class="glass-card w-full max-w-md rounded-2xl p-8 md:p-10 relative overflow-hidden">
+            
+            <div class="absolute top-0 left-0 w-full h-1 bg-slate-100">
+                <div id="progress-bar" class="h-full bg-mint-500 transition-all duration-1000 ease-out" style="width: 20%"></div>
+            </div>
+
+            <div class="flex justify-center mb-8 pt-4">
+                <div class="relative w-20 h-20 flex items-center justify-center">
+                    <div class="absolute inset-0 rounded-full border-4 border-mint-100"></div>
+                    <div class="absolute inset-0 rounded-full border-4 border-mint-500 border-t-transparent animate-spin-slow shadow-glow"></div>
+                    <i class="ph ph-envelope-open text-3xl text-mint-600 animate-pulse-slow"></i>
+                </div>
+            </div>
+
+            <div class="space-y-5" id="checklist">
+                
+                <div class="flex items-center gap-4 step-item" data-status="done">
+                    <div class="step-icon text-mint-500 text-xl">
+                        <i class="ph-fill ph-check-circle"></i>
+                    </div>
+                    <span class="step-text text-sm font-semibold text-charcoal">Authenticating Gmail connection</span>
+                </div>
+
+                <div class="flex items-center gap-4 step-item" data-status="done">
+                    <div class="step-icon text-mint-500 text-xl">
+                        <i class="ph-fill ph-check-circle"></i>
+                    </div>
+                    <span class="step-text text-sm font-semibold text-charcoal">Scanning recent conversations</span>
+                </div>
+
+                <div class="flex items-center gap-4 step-item" data-status="active">
+                    <div class="step-icon text-mint-500 text-xl animate-pulse">
+                        <i class="ph-fill ph-circle-notch animate-spin"></i>
+                    </div>
+                    <span class="step-text text-sm font-semibold text-charcoal">Filtering feedback-related threads</span>
+                </div>
+
+                <div class="flex items-center gap-4 step-item opacity-50" data-status="pending">
+                    <div class="step-icon text-slate-300 text-xl">
+                        <i class="ph ph-circle"></i>
+                    </div>
+                    <span class="step-text text-sm font-medium text-slate-500">Clustering recurring topics</span>
+                </div>
+
+                <div class="flex items-center gap-4 step-item opacity-50" data-status="pending">
+                    <div class="step-icon text-slate-300 text-xl">
+                        <i class="ph ph-circle"></i>
+                    </div>
+                    <span class="step-text text-sm font-medium text-slate-500">Preparing your dashboard</span>
+                </div>
+
+            </div>
+
+            <p class="mt-8 text-[11px] text-slate-400 text-center border-t border-slate-100 pt-4">
+                This runs once. Future syncs are near-instant.
+            </p>
+        </div>
+
+        <div class="mt-8 flex flex-col md:flex-row items-center gap-3 md:gap-8 opacity-70">
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-500">
+                <i class="ph-fill ph-shield-check text-mint-600 text-lg"></i>
+                Read-only access
+            </div>
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-500">
+                <i class="ph-fill ph-hard-drives text-mint-600 text-lg"></i>
+                No emails stored permanently
+            </div>
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-500">
+                <i class="ph-fill ph-plugs text-mint-600 text-lg"></i>
+                Disconnect anytime
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const steps = document.querySelectorAll('.step-item');
+            const progressBar = document.getElementById('progress-bar');
+            const mainHeading = document.getElementById('main-heading');
+            const subHeading = document.getElementById('sub-heading');
+            
+            let currentStep = 2; // Start at index 2 (Step 3)
+
+            const updateStep = (index, status) => {
+                const el = steps[index];
+                const icon = el.querySelector('.step-icon');
+                const text = el.querySelector('.step-text');
+                
+                if (status === 'done') {
+                    el.classList.remove('opacity-50');
+                    icon.className = 'step-icon text-mint-500 text-xl';
+                    icon.innerHTML = '<i class="ph-fill ph-check-circle"></i>';
+                    text.className = 'step-text text-sm font-semibold text-charcoal';
+                } else if (status === 'active') {
+                    el.classList.remove('opacity-50');
+                    icon.className = 'step-icon text-mint-500 text-xl animate-pulse';
+                    icon.innerHTML = '<i class="ph-fill ph-circle-notch animate-spin"></i>';
+                    text.className = 'step-text text-sm font-semibold text-charcoal';
+                }
+            };
+
+            const advanceProgress = () => {
+                if (currentStep < steps.length) {
+                    // Mark previous active as done
+                    updateStep(currentStep, 'done');
+                    
+                    currentStep++;
+                    
+                    // Improved Progress Math (Starts at 20, maxes at ~95)
+                    const percentage = 20 + (currentStep / steps.length) * 75;
+                    progressBar.style.width = `${percentage}%`;
+
+                    if (currentStep < steps.length) {
+                        // Mark next as active
+                        updateStep(currentStep, 'active');
+                    } else {
+                        // All done
+                        setTimeout(() => {
+                            // Reward-based Redirect Message
+                            mainHeading.innerText = "Analysis Complete";
+                            subHeading.innerText = "Your first insights are ready.";
+                            
+                            // Optional: Simulate redirect after delay
+                            setTimeout(() => {
+                                window.location.href = '#dashboard-ready'; 
+                            }, 1200);
+                        }, 800);
+                    }
+                }
+            };
+
+            // Simulate progress every 1.5 seconds
+            setInterval(advanceProgress, 1500);
+        });
+    </script>
+</body>
+</html>
