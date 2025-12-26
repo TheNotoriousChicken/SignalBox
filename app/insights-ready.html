@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignalBox - Insights Ready</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mint: { 50: '#F2FBF7', 100: '#E6F8EF', 200: '#D1FAE5', 500: '#10B981', 600: '#059669' },
+                        charcoal: '#1E293B',
+                        slate: '#64748B',
+                        indigo: { 50: '#EEF2FF', 600: '#4F46E5' },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 30px rgba(0, 0, 0, 0.03)',
+                        'card': '0 10px 30px -10px rgba(0, 0, 0, 0.05)',
+                        'glow': '0 0 20px rgba(16, 185, 129, 0.15)',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'fade-in-up-delay': 'fadeInUp 0.8s ease-out 0.2s forwards',
+                        'fade-in-up-delay-2': 'fadeInUp 0.8s ease-out 0.4s forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            /* Calm Mint Fog Gradient */
+            background: radial-gradient(circle at 50% -20%, #E6F8EF 0%, #F8FAFC 60%, #ffffff 100%);
+            min-height: 100vh;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08);
+            border-color: #D1FAE5; /* mint-200 */
+        }
+    </style>
+</head>
+<body class="text-charcoal antialiased selection:bg-mint-200 selection:text-mint-600">
+
+    <nav class="fixed top-0 w-full z-50 glass-nav h-16">
+        <div class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 font-heading font-bold text-lg tracking-tight text-charcoal">
+                SignalBox<span class="w-2 h-2 rounded-full bg-mint-500"></span>
+            </a>
+
+            <div class="flex items-center gap-6">
+                <button class="text-slate-400 hover:text-charcoal transition-colors">
+                    <i class="ph ph-bell text-xl"></i>
+                </button>
+                <button class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-mint-100 border border-mint-200 flex items-center justify-center text-mint-700 text-xs font-bold">
+                        TB
+                    </div>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-6 max-w-4xl mx-auto">
+
+        <div class="text-center mb-10 opacity-0 animate-fade-in-up">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint-50 border border-mint-100 text-xs font-bold uppercase tracking-wide text-mint-700 mb-6 shadow-sm">
+                <i class="ph-fill ph-check-circle text-lg"></i>
+                Analysis Complete
+            </div>
+            <h1 class="font-heading text-4xl font-bold text-charcoal mb-3">
+                Your first insights are ready
+            </h1>
+            <p class="text-slate-500 text-lg">
+                We found clear patterns in your customer feedback.
+            </p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-8 mb-6 relative overflow-hidden opacity-0 animate-fade-in-up-delay group cursor-pointer">
+            <div class="absolute top-0 left-0 w-1 h-full bg-mint-500"></div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                <div>
+                    <span class="text-xs font-bold text-mint-600 bg-mint-50 px-2 py-1 rounded border border-mint-100 uppercase tracking-wider">Top Insight</span>
+                    <h2 class="font-heading text-2xl font-bold text-charcoal mt-3 group-hover:text-mint-600 transition-colors">
+                        Dark Mode is the #1 request this week
+                    </h2>
+                </div>
+                <div class="mt-4 md:mt-0 flex items-center gap-2 bg-indigo-50 border border-indigo-100 px-3 py-1.5 rounded-full">
+                    <i class="ph-fill ph-trend-up text-indigo-600"></i>
+                    <span class="text-xs font-bold text-indigo-600">High Retention Impact</span>
+                </div>
+            </div>
+
+            <p class="text-slate-600 mb-8 max-w-2xl leading-relaxed">
+                Multiple users mentioned <strong class="text-charcoal font-medium">eye strain</strong> and <strong class="text-charcoal font-medium">night usage</strong>. This pattern is accelerating across your support channels.
+            </p>
+
+            <div class="flex flex-wrap gap-6 md:gap-12 border-t border-slate-100 pt-6">
+                <div>
+                    <div class="text-xs font-medium text-slate-400 uppercase tracking-wide mb-1">Mentions</div>
+                    <div class="text-xl font-bold text-charcoal flex items-center gap-2">
+                        14
+                        <span class="text-xs bg-mint-50 text-mint-600 px-1.5 py-0.5 rounded font-bold">+4 today</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-xs font-medium text-slate-400 uppercase tracking-wide mb-1">Sources</div>
+                    <div class="flex items-center gap-2 text-sm font-semibold text-slate-600">
+                        <span class="flex items-center gap-1"><i class="ph-fill ph-envelope-simple text-slate-400"></i> Email</span>
+                        <span class="text-slate-300">•</span>
+                        <span class="flex items-center gap-1"><i class="ph-fill ph-discord-logo text-slate-400"></i> Discord</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-xs font-medium text-slate-400 uppercase tracking-wide mb-1">Confidence</div>
+                    <div class="text-xl font-bold text-charcoal flex items-center gap-2">
+                        92%
+                        <i class="ph-fill ph-info text-slate-300 text-sm hover:text-slate-500 cursor-help transition-colors" title="Based on source overlap, frequency, and sentiment consistency"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-100/50 flex items-center gap-2 text-xs font-bold text-mint-600 group-hover:text-mint-700 transition-colors">
+                View full evidence
+                <i class="ph-bold ph-arrow-right"></i>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 opacity-0 animate-fade-in-up-delay-2">
+            
+            <div class="glass-card p-6 rounded-xl flex flex-col justify-between cursor-pointer opacity-90 hover:opacity-100 transition-all">
+                <div>
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Insight #2</span>
+                        <i class="ph ph-caret-right text-slate-300"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-charcoal text-lg mb-1">CSV Export Requests</h3>
+                    <p class="text-xs text-slate-500">"Can't download my data"</p>
+                </div>
+                <div class="mt-4 flex items-center gap-3">
+                    <span class="text-sm font-bold text-charcoal">5 mentions</span>
+                    <span class="text-xs text-slate-400 bg-slate-50 px-2 py-0.5 rounded flex items-center gap-1">
+                        <i class="ph-fill ph-minus"></i> Stable
+                    </span>
+                </div>
+            </div>
+
+            <div class="glass-card p-6 rounded-xl flex flex-col justify-between cursor-pointer opacity-90 hover:opacity-100 transition-all">
+                <div>
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Insight #3</span>
+                        <i class="ph ph-caret-right text-slate-300"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-charcoal text-lg mb-1">Mobile UI Issues</h3>
+                    <p class="text-xs text-slate-500">"Menu button doesn't work"</p>
+                </div>
+                <div class="mt-4 flex items-center gap-3">
+                    <span class="text-sm font-bold text-charcoal">3 mentions</span>
+                    <span class="text-xs text-mint-600 bg-mint-50 px-2 py-0.5 rounded flex items-center gap-1">
+                        <i class="ph-fill ph-trend-up"></i> Rising
+                    </span>
+                </div>
+            </div>
+
+            <div class="glass-card p-6 rounded-xl border-mint-200 bg-mint-50/30 flex flex-col justify-between relative overflow-hidden ring-1 ring-transparent hover:ring-mint-200 transition-all">
+                <div class="absolute -right-6 -top-6 w-24 h-24 bg-mint-100 rounded-full blur-2xl opacity-50"></div>
+                
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="ph-fill ph-lightbulb text-mint-500 text-lg"></i>
+                        <h3 class="font-heading font-bold text-charcoal text-sm">Recommended Step</h3>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                        Users asking for Dark Mode are mostly paying customers. Shipping this could reduce churn.
+                    </p>
+                </div>
+                <button class="w-full py-2 rounded-lg bg-white border border-mint-200 text-mint-700 text-xs font-bold hover:bg-mint-50 hover:border-mint-300 transition-colors shadow-sm">
+                    Review this insight
+                </button>
+            </div>
+
+        </div>
+
+        <div class="mt-16 text-center opacity-0 animate-fade-in-up-delay-2">
+            <button class="px-10 py-4 rounded-full bg-mint-500 text-white font-semibold text-lg hover:bg-mint-600 hover:shadow-glow hover:-translate-y-0.5 transition-all shadow-lg shadow-mint-500/20 active:scale-95 flex items-center gap-2 mx-auto">
+                Explore your dashboard
+                <i class="ph-bold ph-arrow-right"></i>
+            </button>
+            <p class="mt-4 text-xs text-slate-400">
+                You can revisit this summary anytime.
+            </p>
+        </div>
+
+    </main>
+
+</body>
+</html>
