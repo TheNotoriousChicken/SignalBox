@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignalBox - Connect Email</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mint: { 50: '#F2FBF7', 100: '#E6F8EF', 200: '#D1FAE5', 500: '#10B981', 600: '#059669' },
+                        charcoal: '#1E293B',
+                        slate: '#64748B',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 30px rgba(0, 0, 0, 0.03)',
+                        'card': '0 10px 40px -10px rgba(0, 0, 0, 0.05)',
+                        'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            /* Signature Mint Fog Gradient */
+            background: radial-gradient(circle at 50% -20%, #E6F8EF 0%, #F8FAFC 40%, #ffffff 80%);
+            min-height: 100vh;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body class="text-charcoal antialiased selection:bg-mint-200 selection:text-mint-600">
+
+    <nav class="fixed top-0 w-full z-50 glass-nav h-16">
+        <div class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 font-heading font-bold text-lg tracking-tight text-charcoal">
+                SignalBox<span class="w-2 h-2 rounded-full bg-mint-500"></span>
+            </a>
+
+            <div class="flex items-center gap-6">
+                <button class="text-slate-400 hover:text-charcoal transition-colors">
+                    <i class="ph ph-bell text-xl"></i>
+                </button>
+                <button class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-mint-100 border border-mint-200 flex items-center justify-center text-mint-700 text-xs font-bold">
+                        TB
+                    </div>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-6 flex flex-col items-center justify-center min-h-[90vh]">
+
+        <div class="mb-8 text-center">
+            <span class="text-xs font-bold uppercase tracking-wider text-mint-600 bg-mint-50 px-3 py-1 rounded-full border border-mint-100">
+                Step 1 of 3
+            </span>
+        </div>
+
+        <div class="text-center mb-10 max-w-lg">
+            <h1 class="font-heading text-3xl font-bold text-charcoal mb-3">
+                Connect your support email
+            </h1>
+            <p class="text-slate-500 text-lg leading-relaxed">
+                SignalBox only reads messages related to customer feedback. We filter out the noise automatically.
+            </p>
+        </div>
+
+        <div class="glass-card w-full max-w-lg rounded-2xl p-8 md:p-10">
+            
+            <div class="space-y-4 mb-8">
+                <label class="block text-xs font-bold text-slate-400 uppercase tracking-wide mb-2">Select Provider</label>
+                
+                <div class="w-full border border-mint-500 ring-1 ring-mint-500 rounded-xl p-4 flex items-center justify-between cursor-pointer bg-mint-50/40 shadow-sm transition-all hover:bg-mint-50">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-white border border-slate-100 shadow-subtle flex items-center justify-center">
+                            <i class="ph ph-google-logo text-xl text-charcoal"></i>
+                        </div>
+                        <div class="text-left">
+                            <h3 class="font-bold text-charcoal text-sm">Gmail / Workspace</h3>
+                            <p class="text-xs text-slate-500">Secure Google sign-in</p>
+                        </div>
+                    </div>
+                    <div class="w-5 h-5 rounded-full border-2 border-mint-500 flex items-center justify-center bg-white">
+                        <div class="w-2.5 h-2.5 rounded-full bg-mint-500"></div>
+                    </div>
+                </div>
+
+                <div class="w-full border border-slate-100 rounded-xl p-4 flex items-center justify-between bg-slate-50 opacity-60 cursor-not-allowed">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-white border border-slate-100 flex items-center justify-center grayscale">
+                            <i class="ph ph-microsoft-outlook-logo text-xl text-charcoal"></i>
+                        </div>
+                        <div class="text-left">
+                            <h3 class="font-bold text-slate-500 text-sm">Outlook</h3>
+                            <p class="text-xs text-slate-400">Coming soon</p>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold bg-slate-200 text-slate-500 px-2 py-0.5 rounded">SOON</span>
+                </div>
+            </div>
+
+            <div class="bg-mint-50/50 border border-mint-100 rounded-xl p-5 mb-8">
+                <div class="flex items-center gap-2 mb-3">
+                    <i class="ph ph-shield-check text-mint-600 text-lg"></i>
+                    <h4 class="font-bold text-charcoal text-sm">Safe & Secure</h4>
+                </div>
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-3">
+                        <i class="ph ph-check text-mint-500 text-sm mt-0.5"></i>
+                        <span class="text-xs text-slate-600 leading-snug">
+                            <strong class="text-charcoal">Read-only access.</strong> We cannot send or delete emails.
+                        </span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="ph ph-check text-mint-500 text-sm mt-0.5"></i>
+                        <span class="text-xs text-slate-600 leading-snug">
+                            <strong class="text-charcoal">Smart Filtering.</strong> We only analyze threads tagged as feedback or support.
+                        </span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="ph ph-check text-mint-500 text-sm mt-0.5"></i>
+                        <span class="text-xs text-slate-600 leading-snug">
+                            <strong class="text-charcoal">Your data is yours.</strong> Disconnect instantly at any time.
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+            <button class="w-full py-3.5 rounded-full bg-mint-500 text-white font-semibold hover:bg-mint-600 transition-all shadow-lg shadow-mint-500/20 active:scale-95 flex items-center justify-center gap-2">
+                <i class="ph ph-google-logo text-lg"></i>
+                Connect Gmail Account
+            </button>
+
+            <div class="mt-6 text-center">
+                <a href="#" class="text-xs font-medium text-slate-400 hover:text-charcoal transition-colors">
+                    I don’t use Gmail — skip for now
+                </a>
+            </div>
+
+        </div>
+
+        <div class="mt-8 flex items-center gap-4 text-slate-300 opacity-60 hover:opacity-100 transition-opacity cursor-help" title="We are SOC2 Compliant">
+            <i class="ph ph-lock-key text-lg"></i>
+            <span class="text-[10px] uppercase tracking-widest font-bold">End-to-end Encrypted</span>
+        </div>
+
+    </main>
+
+</body>
+</html>
