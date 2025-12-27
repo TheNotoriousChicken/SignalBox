@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignalBox - Insights Dashboard</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mint: { 50: '#F2FBF7', 100: '#E6F8EF', 200: '#D1FAE5', 500: '#10B981', 600: '#059669' },
+                        charcoal: '#1E293B',
+                        slate: '#64748B',
+                        indigo: { 50: '#EEF2FF', 600: '#4F46E5', 700: '#4338CA' },
+                        orange: { 50: '#FFF7ED', 600: '#EA580C', 700: '#C2410C' },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 30px rgba(0, 0, 0, 0.03)',
+                        'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02)',
+                        'tooltip': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background: radial-gradient(circle at 50% -20%, #E6F8EF 0%, #F8FAFC 40%, #ffffff 80%);
+            min-height: 100vh;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+        }
+
+        .insight-card {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .insight-card:hover {
+            background: white;
+            border-color: #D1FAE5; /* mint-200 */
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Tooltip Logic */
+        .tooltip-trigger:hover .tooltip-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .tooltip-content {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(4px);
+            transition: all 0.2s ease;
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-charcoal antialiased selection:bg-mint-200 selection:text-mint-600">
+
+    <nav class="fixed top-0 w-full z-50 glass-nav h-16">
+        <div class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <a href="#" class="flex items-center gap-2 font-heading font-bold text-lg tracking-tight text-charcoal">
+                    SignalBox<span class="w-2 h-2 rounded-full bg-mint-500"></span>
+                </a>
+                <div class="h-6 w-px bg-slate-200 hidden sm:block"></div>
+                <button class="hidden sm:flex items-center gap-2 text-sm font-medium text-slate hover:text-charcoal transition-colors">
+                    <div class="w-5 h-5 rounded bg-charcoal text-white flex items-center justify-center text-[10px] font-bold">L</div>
+                    Lunr App
+                    <i class="ph ph-caret-down text-slate-400"></i>
+                </button>
+            </div>
+            <div class="flex items-center gap-6">
+                <button class="text-slate-400 hover:text-charcoal transition-colors relative">
+                    <i class="ph ph-bell text-xl"></i>
+                    <span class="absolute top-0 right-0 w-2 h-2 bg-orange-500 rounded-full border border-white"></span>
+                </button>
+                <button class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-mint-100 border border-mint-200 flex items-center justify-center text-mint-700 text-xs font-bold">TB</div>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-20 px-6 max-w-7xl mx-auto">
+
+        <header class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+            <div>
+                <h1 class="font-heading text-3xl font-bold text-charcoal tracking-tight">Insights</h1>
+                <p class="text-slate-500 mt-1 text-sm">
+                    What your users are asking for — ranked by importance.
+                </p>
+            </div>
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-400 bg-white/50 px-3 py-1.5 rounded-full border border-slate-100">
+                <div class="w-1.5 h-1.5 rounded-full bg-mint-500 animate-pulse"></div>
+                Last updated 2 hours ago
+            </div>
+        </header>
+
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-8">
+            
+            <div class="flex gap-2 overflow-x-auto no-scrollbar w-full lg:w-auto pb-2 lg:pb-0">
+                <button class="px-4 py-1.5 rounded-full text-xs font-bold bg-charcoal text-white shadow-subtle hover:bg-slate-800 transition-colors">All</button>
+                <button class="px-4 py-1.5 rounded-full text-xs font-bold bg-white text-slate-500 border border-slate-200 hover:border-orange-200 hover:text-orange-600 transition-colors flex items-center gap-1.5">
+                    <i class="ph-fill ph-fire"></i> Rising
+                </button>
+                <button class="px-4 py-1.5 rounded-full text-xs font-bold bg-white text-slate-500 border border-slate-200 hover:border-mint-300 hover:text-charcoal transition-colors">Stable</button>
+                <button class="px-4 py-1.5 rounded-full text-xs font-bold bg-white text-slate-500 border border-slate-200 hover:border-slate-300 hover:text-charcoal transition-colors">Ignored</button>
+                
+                <div class="w-px h-6 bg-slate-200 mx-2"></div>
+
+                <button class="px-3 py-1.5 rounded-full text-xs font-medium text-slate-500 hover:bg-white hover:text-charcoal transition-colors">Email</button>
+                <button class="px-3 py-1.5 rounded-full text-xs font-medium text-slate-500 hover:bg-white hover:text-charcoal transition-colors">Discord</button>
+            </div>
+
+            <div class="relative group">
+                <button class="flex items-center gap-2 bg-white px-4 py-2 rounded-lg border border-slate-200 text-xs font-bold text-slate-600 hover:border-mint-300 transition-colors shadow-subtle">
+                    <i class="ph ph-calendar-blank"></i>
+                    Last 7 Days
+                    <i class="ph ph-caret-down text-slate-400"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+            
+            <div class="lg:col-span-2 space-y-4">
+
+                <a href="insight-dark-mode.html" class="insight-card block p-6 rounded-xl relative group">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center gap-3">
+                            <h3 class="font-heading font-bold text-lg text-charcoal group-hover:text-mint-600 transition-colors">Dark Mode</h3>
+                            
+                            <div class="tooltip-trigger relative inline-block">
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-orange-50 text-orange-600 border border-orange-100 flex items-center gap-1 cursor-help">
+                                    <i class="ph-fill ph-fire"></i> Rising
+                                </span>
+                                <div class="tooltip-content absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-charcoal text-white text-[10px] rounded shadow-tooltip whitespace-nowrap z-10">
+                                    Growth > 15% this week
+                                    <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-charcoal"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <i class="ph ph-caret-right text-slate-300 group-hover:text-mint-500 transition-colors"></i>
+                    </div>
+                    
+                    <p class="text-sm text-slate-600 mb-5 leading-relaxed">
+                        Multiple users mentioned eye strain and night usage. Accelerating demand from new signups.
+                    </p>
+
+                    <div class="flex items-center gap-6 border-t border-slate-100 pt-4">
+                        <div class="flex items-center gap-2 text-xs font-medium text-slate-500">
+                            <i class="ph-fill ph-chat-circle-text text-slate-400"></i> 14 Mentions
+                        </div>
+                        <div class="flex items-center gap-2 text-xs font-medium text-slate-500">
+                            <i class="ph-fill ph-chart-bar text-mint-500"></i> 92% Confidence
+                        </div>
+                        
+                        <div class="ml-auto tooltip-trigger relative">
+                            <div class="flex items-center gap-1.5 text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded border border-indigo-100 cursor-help">
+                                <i class="ph-fill ph-warning"></i> High Retention Risk
+                            </div>
+                            <div class="tooltip-content absolute bottom-full right-0 mb-2 px-3 py-1.5 bg-charcoal text-white text-[10px] rounded shadow-tooltip whitespace-nowrap z-10">
+                                Affects 4+ paying users
+                                <div class="absolute top-full right-4 border-4 border-transparent border-t-charcoal"></div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="insight-card block p-6 rounded-xl relative group">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center gap-3">
+                            <h3 class="font-heading font-bold text-lg text-charcoal group-hover:text-mint-600 transition-colors">Mobile Login Issues</h3>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-50 text-red-600 border border-red-100 flex items-center gap-1">
+                                <i class="ph-fill ph-warning-circle"></i> New
+                            </span>
+                        </div>
+                        <i class="ph ph-caret-right text-slate-300 group-hover:text-mint-500 transition-colors"></i>
+                    </div>
+                    
+                    <p class="text-sm text-slate-600 mb-5 leading-relaxed">
+                        Users on iOS Safari reporting frozen login button. Confirmed by 3 enterprise accounts.
+                    </p>
+
+                    <div class="flex items-center gap-6 border-t border-slate-100 pt-4">
+                        <div class="flex items-center gap-2 text-xs font-medium text-slate-500">
+                            <i class="ph-fill ph-chat-circle-text text-slate-400"></i> 5 Mentions
+                        </div>
+                        <div class="flex items-center gap-2 text-xs font-medium text-slate-500">
+                            <i class="ph-fill ph-chart-bar text-mint-500"></i> 98% Confidence
+                        </div>
+                        <div class="ml-auto flex items-center gap-1.5 text-[10px] font-bold text-red-600 bg-red-50 px-2 py-1 rounded border border-red-100">
+                            Critical Bug
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="insight-card block p-6 rounded-xl relative group">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center gap-3">
+                            <h3 class="font-heading font-bold text-lg text-charcoal group-hover:text-mint-600 transition-colors">CSV Export</h3>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-500 border border-slate-200 flex items-center gap-1">
+                                <i class="ph-bold ph-minus"></i> Stable
+                            </span>
+                        </div>
+                        <i class="ph ph-caret-right text-slate-300 group-hover:text-mint-500 transition-colors"></i>
+                    </div>
+                    
+                    <p class="text-sm text-slate-600 mb-5 leading-relaxed">
+                        Steady request volume from admins wanting to download monthly usage reports.
+                    </p>
+
+                    <div class="flex items-center gap-6 border-t border-slate-100 pt-4">
+                        <div class="flex items-center gap-2 text-xs font-medium text-slate-500">
+                            <i class="ph-fill ph-chat-circle-text text-slate-400"></i> 8 Mentions
+                        </div>
+                        <div class="flex items-center gap-2 text-xs font-medium text-slate-500">
+                            <i class="ph-fill ph-chart-bar text-slate-400"></i> 85% Confidence
+                        </div>
+                        <div class="ml-auto text-[10px] font-medium text-slate-400">
+                            Updated yesterday
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="insight-card block p-6 rounded-xl relative group opacity-80 hover:opacity-100 transition-all">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center gap-3">
+                            <h3 class="font-heading font-bold text-lg text-charcoal group-hover:text-mint-600 transition-colors">Notification Noise</h3>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-50 text-slate-400 border border-slate-100 flex items-center gap-1">
+                                <i class="ph-bold ph-arrow-down-right"></i> Declining
+                            </span>
+                        </div>
+                        <i class="ph ph-caret-right text-slate-300 group-hover:text-mint-500 transition-colors"></i>
+                    </div>
+                    
+                    <p class="text-sm text-slate-600 mb-5 leading-relaxed">
+                        Complaints about email volume have decreased since last week's digest update.
+                    </p>
+
+                    <div class="flex items-center gap-6 border-t border-slate-100 pt-4">
+                        <div class="flex items-center gap-2 text-xs font-medium text-slate-500">
+                            <i class="ph-fill ph-chat-circle-text text-slate-400"></i> 2 Mentions
+                        </div>
+                        <div class="ml-auto text-[10px] font-medium text-slate-400">
+                            Updated 3 days ago
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="lg:col-span-1 space-y-6">
+                
+                <div class="glass-panel p-6 rounded-xl sticky top-24">
+                    <div class="flex items-center gap-2 mb-4 text-xs font-bold uppercase tracking-wider text-slate-400">
+                        <i class="ph-fill ph-crosshair"></i>
+                        Focus Area
+                    </div>
+                    <div class="space-y-4">
+                        <div class="p-3 bg-white/80 rounded-lg border border-slate-100 shadow-sm">
+                            <span class="block text-2xl font-bold text-charcoal mb-1">63%</span>
+                            <p class="text-xs text-slate-600 leading-snug">
+                                of this week's feedback is related to <strong class="text-charcoal">Visual Design & UI</strong>.
+                            </p>
+                        </div>
+                        
+                        <div class="p-3 bg-indigo-50/50 rounded-lg border border-indigo-100">
+                            <div class="flex items-center gap-2 mb-1">
+                                <i class="ph-fill ph-users text-indigo-600 text-sm"></i>
+                                <span class="text-xs font-bold text-indigo-700">Paying Users</span>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-snug">
+                                Are prioritizing <strong>CSV Export</strong> and <strong>Mobile Login</strong> fixes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-6 border-t border-slate-200/50">
+                        <h4 class="text-xs font-bold text-charcoal mb-3">Recently Resolved</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-center gap-2 text-xs text-slate-500 line-through decoration-slate-300">
+                                <i class="ph-fill ph-check-circle text-mint-500"></i>
+                                API Key Generation
+                            </li>
+                            <li class="flex items-center gap-2 text-xs text-slate-500 line-through decoration-slate-300">
+                                <i class="ph-fill ph-check-circle text-mint-500"></i>
+                                Avatar Upload Bug
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
