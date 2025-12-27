@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignalBox - Settings</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mint: { 50: '#F2FBF7', 100: '#E6F8EF', 200: '#D1FAE5', 500: '#10B981', 600: '#059669', 700: '#047857' },
+                        charcoal: '#1E293B',
+                        slate: '#64748B',
+                        red: { 50: '#FEF2F2', 600: '#DC2626', 700: '#B91C1C' },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 30px rgba(0, 0, 0, 0.03)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02)',
+                        'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+                        'toggle': '0 2px 4px rgba(0,0,0,0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            /* Calm Mint Fog Gradient */
+            background: radial-gradient(circle at 50% -20%, #E6F8EF 0%, #F8FAFC 60%, #ffffff 100%);
+            min-height: 100vh;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            background: white;
+            border-color: #E2E8F0;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Form Inputs */
+        .input-field {
+            width: 100%;
+            padding: 0.625rem 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #E2E8F0;
+            background-color: white;
+            font-size: 0.875rem;
+            color: #1E293B;
+            transition: all 0.2s;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #10B981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+        .input-field:disabled {
+            background-color: #F8FAFC;
+            color: #94A3B8;
+            cursor: not-allowed;
+        }
+
+        /* Toggle Switch */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #10B981;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #10B981;
+        }
+        
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-charcoal antialiased selection:bg-mint-200 selection:text-mint-600">
+
+    <nav class="fixed top-0 w-full z-50 glass-nav h-16">
+        <div class="max-w-[1600px] mx-auto px-6 h-full flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <a href="#" class="flex items-center gap-2 font-heading font-bold text-lg tracking-tight text-charcoal">
+                    SignalBox<span class="w-2 h-2 rounded-full bg-mint-500"></span>
+                </a>
+                <div class="h-6 w-px bg-slate-200 hidden sm:block"></div>
+                <button class="hidden sm:flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-charcoal transition-colors">
+                    <div class="w-5 h-5 rounded bg-charcoal text-white flex items-center justify-center text-[10px] font-bold">L</div>
+                    Lunr App
+                    <i class="ph ph-caret-down text-slate-400"></i>
+                </button>
+            </div>
+            <div class="flex items-center gap-6">
+                <button class="text-slate-400 hover:text-charcoal transition-colors">
+                    <i class="ph ph-bell text-xl"></i>
+                </button>
+                <button class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-mint-100 border border-mint-200 flex items-center justify-center text-mint-700 text-xs font-bold">TB</div>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-28 pb-20 px-6 max-w-4xl mx-auto">
+
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+            <div>
+                <h1 class="font-heading text-3xl font-bold text-charcoal tracking-tight mb-2">Settings</h1>
+                <p class="text-slate-500 text-lg">
+                    Manage your workspace preferences and data.
+                </p>
+            </div>
+            <div class="flex items-center gap-2 text-xs font-medium text-mint-700 bg-mint-50/50 px-3 py-1.5 rounded-full border border-mint-100 opacity-80">
+                <i class="ph-bold ph-check"></i>
+                All changes saved
+            </div>
+        </div>
+
+        <div class="glass-card p-8 rounded-xl mb-8">
+            <div class="flex items-center gap-2 mb-6 border-b border-slate-100 pb-4">
+                <i class="ph-fill ph-buildings text-mint-600 text-lg"></i>
+                <h2 class="text-sm font-bold text-charcoal uppercase tracking-wide">Workspace Settings</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-1.5">
+                    <label class="text-sm font-semibold text-charcoal">Workspace Name</label>
+                    <input type="text" value="Tejas Workspace" class="input-field" />
+                    <p class="text-xs text-slate-400">Visible to all team members.</p>
+                </div>
+
+                <div class="space-y-1.5">
+                    <label class="text-sm font-semibold text-charcoal">Workspace ID</label>
+                    <div class="relative">
+                        <input type="text" value="ws_83hd92mx" disabled class="input-field font-mono text-xs" />
+                        <button class="absolute right-2 top-1.5 p-1 text-slate-400 hover:text-charcoal transition-colors" title="Copy to clipboard">
+                            <i class="ph-bold ph-copy"></i>
+                        </button>
+                    </div>
+                    <p class="text-xs text-slate-400">Used for API access and support.</p>
+                </div>
+
+                <div class="space-y-1.5">
+                    <label class="text-sm font-semibold text-charcoal">Timezone</label>
+                    <div class="relative">
+                        <select class="input-field appearance-none cursor-pointer">
+                            <option>Pacific Time (US & Canada)</option>
+                            <option>UTC</option>
+                            <option>London</option>
+                            <option selected>Asia/Kolkata (IST)</option>
+                        </select>
+                        <i class="ph-bold ph-caret-down absolute right-3 top-3 text-slate-400 pointer-events-none"></i>
+                    </div>
+                    <p class="text-xs text-slate-400">Affects chart timestamps and summaries.</p>
+                </div>
+
+                <div class="space-y-1.5">
+                    <label class="text-sm font-semibold text-charcoal">Language</label>
+                    <div class="relative">
+                        <select class="input-field appearance-none cursor-pointer">
+                            <option selected>English (US)</option>
+                            <option>English (UK)</option>
+                            <option>French</option>
+                            <option>German</option>
+                        </select>
+                        <i class="ph-bold ph-caret-down absolute right-3 top-3 text-slate-400 pointer-events-none"></i>
+                    </div>
+                    <p class="text-xs text-slate-400">System emails will use this language.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card p-8 rounded-xl mb-8">
+            <div class="flex items-center gap-2 mb-6 border-b border-slate-100 pb-4">
+                <i class="ph-fill ph-sliders-horizontal text-mint-600 text-lg"></i>
+                <h2 class="text-sm font-bold text-charcoal uppercase tracking-wide">App Defaults</h2>
+            </div>
+
+            <div class="space-y-6">
+                
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 class="text-sm font-bold text-charcoal">Minimum Insight Confidence</h4>
+                        <p class="text-xs text-slate-500 mt-0.5">Only create insights when confidence score exceeds this threshold.</p>
+                    </div>
+                    <div class="relative min-w-[100px]">
+                        <select class="input-field py-1.5 text-xs font-bold appearance-none cursor-pointer text-center">
+                            <option>60%</option>
+                            <option selected>70% (Default)</option>
+                            <option>80%</option>
+                            <option>90%</option>
+                        </select>
+                        <i class="ph-bold ph-caret-down absolute right-2 top-2 text-slate-400 pointer-events-none text-xs"></i>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 class="text-sm font-bold text-charcoal">Auto-group Similar Feedback</h4>
+                        <p class="text-xs text-slate-500 mt-0.5">Automatically attach incoming messages to existing matching insights.</p>
+                    </div>
+                    <div class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" name="toggle" id="toggle1" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer shadow-toggle transition-all duration-300 left-0 checked:left-5 top-0.5 checked:border-mint-500" checked/>
+                        <label for="toggle1" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-200 cursor-pointer transition-colors duration-300 checked:bg-mint-500"></label>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 class="text-sm font-bold text-charcoal">Merge Duplicate Insights</h4>
+                        <p class="text-xs text-slate-500 mt-0.5">If two insights are 95% similar, merge them into one.</p>
+                    </div>
+                    <div class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" name="toggle" id="toggle2" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer shadow-toggle transition-all duration-300 left-0 checked:left-5 top-0.5 checked:border-mint-500" checked/>
+                        <label for="toggle2" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-200 cursor-pointer transition-colors duration-300 checked:bg-mint-500"></label>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between opacity-80">
+                    <div>
+                        <h4 class="text-sm font-bold text-charcoal">Show Declining Insights</h4>
+                        <p class="text-xs text-slate-500 mt-0.5">Keep insights visible even if volume drops to zero.</p>
+                    </div>
+                    <div class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" name="toggle" id="toggle3" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer shadow-toggle transition-all duration-300 left-0 checked:left-5 top-0.5 checked:border-mint-500" />
+                        <label for="toggle3" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-200 cursor-pointer transition-colors duration-300 checked:bg-mint-500"></label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="glass-card p-8 rounded-xl mb-8">
+            <div class="flex items-center gap-2 mb-6 border-b border-slate-100 pb-4">
+                <i class="ph-fill ph-shield-check text-mint-600 text-lg"></i>
+                <h2 class="text-sm font-bold text-charcoal uppercase tracking-wide">Data & Privacy</h2>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                <div>
+                    <h4 class="text-sm font-bold text-charcoal">Data Retention</h4>
+                    <p class="text-xs text-slate-500 mt-1 max-w-sm leading-relaxed">
+                        How long we store raw feedback text. Insights and aggregate stats are kept indefinitely.
+                    </p>
+                </div>
+                <div class="flex items-center gap-3 w-full md:w-auto">
+                    <div class="relative min-w-[140px]">
+                        <select class="input-field py-2 text-sm appearance-none cursor-pointer">
+                            <option>30 Days</option>
+                            <option>90 Days</option>
+                            <option selected>Unlimited</option>
+                        </select>
+                        <i class="ph-bold ph-caret-down absolute right-3 top-3 text-slate-400 pointer-events-none text-xs"></i>
+                    </div>
+                    <button disabled class="px-4 py-2 rounded-lg border border-slate-200 text-slate-400 text-sm font-semibold cursor-not-allowed bg-slate-50 whitespace-nowrap">
+                        Export Data <span class="text-[10px] uppercase ml-1 opacity-70">Soon</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="mt-6 p-3 bg-mint-50/50 border border-mint-100 rounded-lg flex gap-3 items-start">
+                <i class="ph-fill ph-lock-key text-mint-500 mt-0.5"></i>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    <strong>Your data belongs to you.</strong> We do not train public AI models on your private customer feedback. <a href="#" class="text-mint-600 underline hover:text-mint-700">Read our Privacy Promise.</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="glass-card p-8 rounded-xl mb-8">
+            <div class="flex items-center gap-2 mb-6 border-b border-slate-100 pb-4">
+                <i class="ph-fill ph-plugs-connected text-mint-600 text-lg"></i>
+                <h2 class="text-sm font-bold text-charcoal uppercase tracking-wide">Sync Preferences</h2>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-4">
+                    <div class="relative min-w-[120px]">
+                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Frequency</label>
+                        <select class="input-field py-2 text-sm appearance-none cursor-pointer">
+                            <option selected>Every Hour</option>
+                            <option>Daily</option>
+                            <option>Manual Only</option>
+                        </select>
+                        <i class="ph-bold ph-caret-down absolute right-3 bottom-3 text-slate-400 pointer-events-none text-xs"></i>
+                    </div>
+                    
+                    <div class="pt-4">
+                        <div class="flex items-center gap-3">
+                            <span class="text-sm font-medium text-slate-600">Pause all syncs</span>
+                            <div class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
+                                <input type="checkbox" name="toggle" id="toggle4" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer shadow-toggle transition-all duration-300 left-0 checked:left-5 top-0.5 checked:border-mint-500" />
+                                <label for="toggle4" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-200 cursor-pointer transition-colors duration-300 checked:bg-mint-500"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-end gap-2">
+                    <button class="flex items-center gap-2 text-slate-400 hover:text-mint-600 transition-colors text-sm font-bold disabled:opacity-50">
+                        <i class="ph-bold ph-arrows-clockwise"></i> Sync Now
+                    </button>
+                    <span class="text-[10px] text-slate-400 flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-mint-500"></span> Last synced 2 hours ago
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-12 bg-white/60 border border-red-100 p-8 rounded-xl mb-12">
+            <div class="flex items-center gap-2 mb-6 border-b border-red-100 pb-4">
+                <i class="ph-fill ph-warning-octagon text-red-600 text-lg"></i>
+                <h2 class="text-sm font-bold text-red-700 uppercase tracking-wide">Danger Zone</h2>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div>
+                    <h4 class="text-sm font-bold text-charcoal">Delete this Workspace</h4>
+                    <p class="text-xs text-slate-500 mt-1 max-w-md">
+                        This action will permanently delete "Tejas Workspace" and all 124 insights. This cannot be undone.
+                    </p>
+                </div>
+                <div class="flex gap-4">
+                    <button class="px-4 py-2 rounded-lg text-slate-500 hover:text-red-600 text-sm font-semibold transition-colors">
+                        Delete App
+                    </button>
+                    <button class="px-4 py-2 rounded-lg border border-red-200 text-red-600 hover:bg-red-50 text-sm font-bold transition-colors shadow-sm">
+                        Delete Workspace
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center text-xs text-slate-300 pb-8">
+            SignalBox • Early Access • <a href="#" class="hover:text-slate-400">Support</a>
+        </div>
+
+    </main>
+
+</body>
+</html>
