@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignalBox - Roadmap</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mint: { 50: '#F2FBF7', 100: '#E6F8EF', 200: '#D1FAE5', 500: '#10B981', 600: '#059669', 700: '#047857' },
+                        charcoal: '#1E293B',
+                        slate: '#64748B',
+                        indigo: { 50: '#EEF2FF', 600: '#4F46E5' },
+                        orange: { 50: '#FFF7ED', 600: '#EA580C' },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 30px rgba(0, 0, 0, 0.03)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02)',
+                        'lift': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02)',
+                        'glow-indigo': '0 0 0 1px rgba(79, 70, 229, 0.15), 0 4px 12px rgba(79, 70, 229, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            /* Calm Mint Fog Gradient */
+            background: radial-gradient(circle at 50% -20%, #E6F8EF 0%, #F8FAFC 60%, #ffffff 100%);
+            min-height: 100vh;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .kanban-card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .kanban-card:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05);
+            border-color: #D1FAE5; /* mint-200 */
+        }
+
+        /* Custom Scrollbar */
+        .custom-scroll::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background-color: #E2E8F0;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body class="text-charcoal antialiased selection:bg-mint-200 selection:text-mint-600">
+
+    <nav class="fixed top-0 w-full z-50 glass-nav h-16">
+        <div class="max-w-[1600px] mx-auto px-6 h-full flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <a href="#" class="flex items-center gap-2 font-heading font-bold text-lg tracking-tight text-charcoal">
+                    SignalBox<span class="w-2 h-2 rounded-full bg-mint-500"></span>
+                </a>
+                <div class="h-6 w-px bg-slate-200 hidden sm:block"></div>
+                <button class="hidden sm:flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-charcoal transition-colors">
+                    <div class="w-5 h-5 rounded bg-charcoal text-white flex items-center justify-center text-[10px] font-bold">L</div>
+                    Lunr App
+                    <i class="ph ph-caret-down text-slate-400"></i>
+                </button>
+            </div>
+            <div class="flex items-center gap-6">
+                <button class="text-slate-400 hover:text-charcoal transition-colors">
+                    <i class="ph ph-bell text-xl"></i>
+                </button>
+                <button class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-mint-100 border border-mint-200 flex items-center justify-center text-mint-700 text-xs font-bold">TB</div>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-20 px-6 max-w-[1600px] mx-auto">
+
+        <header class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+            <div>
+                <h1 class="font-heading text-3xl font-bold text-charcoal tracking-tight">Roadmap</h1>
+                <p class="text-slate-500 mt-1 text-sm">
+                    How feedback is turning into product decisions.
+                </p>
+            </div>
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-400 bg-white/50 px-3 py-1.5 rounded-full border border-slate-100">
+                <div class="w-1.5 h-1.5 rounded-full bg-mint-500 animate-pulse"></div>
+                Updated recently
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 xl:grid-cols-4 gap-8 items-start">
+            
+            <div class="xl:col-span-3">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    
+                    <div class="bg-mint-50/40 rounded-xl p-3 flex flex-col gap-3 min-h-[400px]">
+                        <div class="flex items-center gap-2 px-1 pb-1">
+                            <span class="w-2 h-2 rounded-full bg-mint-500"></span>
+                            <h3 class="text-sm font-bold text-charcoal uppercase tracking-wider">Planned</h3>
+                            <span class="ml-auto text-xs font-medium text-slate-400 bg-white px-2 py-0.5 rounded-full border border-slate-100 shadow-sm">2</span>
+                        </div>
+                        
+                        <div class="kanban-card p-4 rounded-xl cursor-pointer group">
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-50 text-indigo-600 border border-indigo-100">Feature</span>
+                                <div class="flex -space-x-1">
+                                    <div class="w-5 h-5 rounded-full bg-white border border-slate-100 flex items-center justify-center text-slate-400 shadow-sm text-[10px]"><i class="ph-fill ph-envelope-simple"></i></div>
+                                    <div class="w-5 h-5 rounded-full bg-white border border-slate-100 flex items-center justify-center text-indigo-400 shadow-sm text-[10px]"><i class="ph-fill ph-discord-logo"></i></div>
+                                </div>
+                            </div>
+                            
+                            <h4 class="font-heading font-bold text-charcoal text-sm mb-1 group-hover:text-mint-600 transition-colors">Dark Mode</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed mb-3">High retention risk for power users working at night.</p>
+                            
+                            <div class="flex items-center justify-between pt-3 border-t border-slate-100/50">
+                                <span class="text-[10px] font-semibold text-mint-700 bg-mint-50 px-2 py-0.5 rounded">92% confidence</span>
+                                <div class="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-[9px] font-bold text-slate-600 border border-white">TB</div>
+                            </div>
+                            <div class="mt-2 text-[10px] font-medium text-slate-400 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                View evidence <i class="ph-bold ph-arrow-right"></i>
+                            </div>
+                        </div>
+
+                        <div class="kanban-card p-4 rounded-xl cursor-pointer group">
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-50 text-indigo-600 border border-indigo-100">Feature</span>
+                                <div class="w-5 h-5 rounded-full bg-white border border-slate-100 flex items-center justify-center text-slate-400 shadow-sm text-[10px]"><i class="ph-fill ph-chat-text"></i></div>
+                            </div>
+                            <h4 class="font-heading font-bold text-charcoal text-sm mb-1 group-hover:text-mint-600 transition-colors">API Key Management</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed mb-3">Requested by Enterprise leads for custom integrations.</p>
+                            <div class="flex items-center justify-between pt-3 border-t border-slate-100/50">
+                                <span class="text-[10px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">80% confidence</span>
+                                <div class="w-5 h-5 rounded-full bg-slate-100 border border-white"></div>
+                            </div>
+                            <div class="mt-2 text-[10px] font-medium text-slate-400 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                View evidence <i class="ph-bold ph-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-indigo-50/40 rounded-xl p-3 flex flex-col gap-3 min-h-[400px]">
+                        <div class="flex items-center gap-2 px-1 pb-1">
+                            <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+                            <h3 class="text-sm font-bold text-charcoal uppercase tracking-wider">In Progress</h3>
+                            <span class="ml-auto text-xs font-medium text-slate-400 bg-white px-2 py-0.5 rounded-full border border-slate-100 shadow-sm">1</span>
+                        </div>
+
+                        <div class="kanban-card p-4 rounded-xl cursor-pointer group border-l-4 border-l-indigo-500 shadow-glow-indigo">
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-50 text-red-600 border border-red-100">Critical Bug</span>
+                                <div class="w-5 h-5 rounded-full bg-white border border-slate-100 flex items-center justify-center text-slate-400 shadow-sm text-[10px]"><i class="ph-fill ph-envelope-simple"></i></div>
+                            </div>
+                            <h4 class="font-heading font-bold text-charcoal text-sm mb-1 group-hover:text-indigo-600 transition-colors">Mobile Login Failure</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed mb-3">iOS Safari users unable to tap 'Sign In'. Affecting logins.</p>
+                            <div class="flex items-center justify-between pt-3 border-t border-slate-100/50">
+                                <span class="text-[10px] font-semibold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">98% confidence</span>
+                                <div class="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-[9px] font-bold text-slate-600 border border-white">S</div>
+                            </div>
+                            <div class="mt-2 text-[10px] font-medium text-slate-400 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                View evidence <i class="ph-bold ph-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50/60 rounded-xl p-3 flex flex-col gap-3 min-h-[400px]">
+                        <div class="flex items-center gap-2 px-1 pb-1">
+                            <span class="w-2 h-2 rounded-full bg-slate-400"></span>
+                            <h3 class="text-sm font-bold text-charcoal uppercase tracking-wider">Shipped</h3>
+                            <span class="ml-auto text-xs font-medium text-slate-400 bg-white px-2 py-0.5 rounded-full border border-slate-100 shadow-sm">0</span>
+                        </div>
+
+                        <div class="h-32 rounded-xl border border-dashed border-slate-300 flex flex-col items-center justify-center text-center p-4">
+                            <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 mb-2">
+                                <i class="ph-fill ph-package"></i>
+                            </div>
+                            <p class="text-xs text-slate-500 font-medium">Nothing shipped yet this week</p>
+                            <p class="text-[10px] text-slate-400 mt-1">Focusing on quality.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50/30 rounded-xl p-3 flex flex-col gap-3 min-h-[400px]">
+                        <div class="flex items-center gap-2 px-1 pb-1">
+                            <span class="w-2 h-2 rounded-full bg-slate-300"></span>
+                            <h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider">Ignored</h3>
+                            <span class="ml-auto text-xs font-medium text-slate-400 bg-white px-2 py-0.5 rounded-full border border-slate-100 shadow-sm">1</span>
+                        </div>
+
+                        <div class="kanban-card p-4 rounded-xl cursor-pointer group opacity-60 hover:opacity-100 grayscale hover:grayscale-0">
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-500 border border-slate-200">Integration</span>
+                            </div>
+                            <h4 class="font-heading font-bold text-slate-500 text-sm mb-1">Slack Integration</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed mb-3">Low demand relative to engineering effort required.</p>
+                            <div class="flex items-center justify-between pt-3 border-t border-slate-100/50">
+                                <span class="text-[10px] font-semibold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">60% confidence</span>
+                                <div class="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-[9px] font-bold text-slate-600 border border-white">T</div>
+                            </div>
+                            <div class="mt-2 text-[10px] font-medium text-slate-400 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                Re-open <i class="ph-bold ph-arrow-counter-clockwise"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <aside class="xl:col-span-1 space-y-6 sticky top-24">
+                <div class="p-6 bg-white/60 backdrop-blur-md rounded-xl border border-slate-200/60 shadow-sm">
+                    <div class="flex items-center gap-2 mb-4 text-xs font-bold uppercase tracking-wider text-slate-400">
+                        <i class="ph-fill ph-lightbulb text-mint-500"></i>
+                        Why this matters
+                    </div>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <div class="w-1 h-1 rounded-full bg-mint-500 mt-2 shrink-0"></div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Teams that ship their top insight within 14 days see a <strong class="text-charcoal">12% drop in churn</strong>.
+                            </p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-1 h-1 rounded-full bg-mint-500 mt-2 shrink-0"></div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Most high-velocity teams act on 1–2 insights per week to maintain momentum.
+                            </p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-1 h-1 rounded-full bg-slate-300 mt-2 shrink-0"></div>
+                            <p class="text-xs text-slate-500 leading-relaxed">
+                                Don't be afraid to move items to "Ignored". Focus requires saying no.
+                            </p>
+                        </li>
+                    </ul>
+
+                    <div class="mt-6 pt-6 border-t border-slate-200/50">
+                        <h4 class="text-xs font-bold text-charcoal mb-2">Velocity Health</h4>
+                        <div class="flex items-center gap-2">
+                            <div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-mint-500 w-3/4 rounded-full"></div>
+                            </div>
+                            <span class="text-[10px] font-bold text-mint-600">Good</span>
+                        </div>
+                        <p class="text-[10px] text-slate-400 mt-1">You're resolving insights faster than average.</p>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
