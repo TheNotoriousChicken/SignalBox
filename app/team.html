@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignalBox - Team Settings</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mint: { 50: '#F2FBF7', 100: '#E6F8EF', 200: '#D1FAE5', 500: '#10B981', 600: '#059669', 700: '#047857' },
+                        charcoal: '#1E293B',
+                        slate: '#64748B',
+                        indigo: { 50: '#EEF2FF', 600: '#4F46E5' },
+                        orange: { 50: '#FFF7ED', 600: '#EA580C' },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 30px rgba(0, 0, 0, 0.03)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02)',
+                        'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            /* Calm Mint Fog Gradient */
+            background: radial-gradient(circle at 50% -20%, #E6F8EF 0%, #F8FAFC 60%, #ffffff 100%);
+            min-height: 100vh;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            background: white;
+            border-color: #E2E8F0;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+
+        .member-row {
+            transition: background-color 0.15s ease;
+        }
+        .member-row:hover {
+            background-color: rgba(248, 250, 252, 0.8); /* slate-50 */
+        }
+    </style>
+</head>
+<body class="text-charcoal antialiased selection:bg-mint-200 selection:text-mint-600">
+
+    <nav class="fixed top-0 w-full z-50 glass-nav h-16">
+        <div class="max-w-[1600px] mx-auto px-6 h-full flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <a href="#" class="flex items-center gap-2 font-heading font-bold text-lg tracking-tight text-charcoal">
+                    SignalBox<span class="w-2 h-2 rounded-full bg-mint-500"></span>
+                </a>
+                <div class="h-6 w-px bg-slate-200 hidden sm:block"></div>
+                <button class="hidden sm:flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-charcoal transition-colors">
+                    <div class="w-5 h-5 rounded bg-charcoal text-white flex items-center justify-center text-[10px] font-bold">L</div>
+                    Lunr App
+                    <i class="ph ph-caret-down text-slate-400"></i>
+                </button>
+            </div>
+            <div class="flex items-center gap-6">
+                <button class="text-slate-400 hover:text-charcoal transition-colors relative">
+                    <i class="ph ph-bell text-xl"></i>
+                </button>
+                <button class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-mint-100 border border-mint-200 flex items-center justify-center text-mint-700 text-xs font-bold">TB</div>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-28 pb-20 px-6 max-w-6xl mx-auto">
+
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+            <div>
+                <h1 class="font-heading text-3xl font-bold text-charcoal tracking-tight mb-2">Team</h1>
+                <p class="text-slate-500 text-lg">
+                    Manage access and ownership for this workspace.
+                </p>
+            </div>
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-500 bg-white px-3 py-1.5 rounded-full border border-slate-200 shadow-sm">
+                <i class="ph-fill ph-users text-slate-400"></i>
+                3 members · 1 owner
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+
+            <div class="lg:col-span-2 space-y-8">
+                
+                <div class="glass-card p-6 rounded-xl">
+                    <h3 class="font-heading text-sm font-bold text-charcoal uppercase tracking-wide mb-4">Invite New Member</h3>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <div class="relative grow">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="ph ph-envelope-simple text-slate-400"></i>
+                            </div>
+                            <input type="email" placeholder="colleague@company.com" class="w-full pl-10 pr-4 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-mint-500/20 focus:border-mint-500 transition-all bg-white" />
+                        </div>
+                        <div class="relative min-w-[140px]">
+                            <select class="w-full pl-3 pr-8 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-mint-500/20 focus:border-mint-500 transition-all bg-white appearance-none cursor-pointer text-charcoal font-medium">
+                                <option>Editor</option>
+                                <option>Viewer</option>
+                                <option>Admin</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                <i class="ph-bold ph-caret-down text-slate-400 text-xs"></i>
+                            </div>
+                        </div>
+                        <button class="px-5 py-2.5 rounded-lg bg-mint-500 text-white text-sm font-semibold hover:bg-mint-600 transition-colors shadow-sm whitespace-nowrap">
+                            Send Invite
+                        </button>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-3 flex items-center gap-1.5">
+                        <i class="ph-fill ph-info"></i>
+                        Invited members only see what their role allows.
+                    </p>
+                </div>
+
+                <div class="glass-card rounded-xl overflow-hidden border border-slate-200">
+                    <div class="px-6 py-4 border-b border-slate-100 bg-slate-50/50 flex justify-between items-center">
+                        <h3 class="font-heading text-sm font-bold text-charcoal uppercase tracking-wide">Active Members</h3>
+                    </div>
+                    
+                    <div class="divide-y divide-slate-100">
+                        
+                        <div class="member-row px-6 py-5 flex items-center justify-between group">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-full bg-mint-100 text-mint-700 flex items-center justify-center font-bold text-sm border border-mint-200">
+                                    TB
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-2">
+                                        <h4 class="text-sm font-bold text-charcoal">Tejas Bagkar</h4>
+                                        <span class="text-[10px] font-bold text-mint-700 bg-mint-50 px-2 py-0.5 rounded border border-mint-100">Owner</span>
+                                    </div>
+                                    <p class="text-xs text-slate-500">tejas@signalbox.io</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-6">
+                                <span class="hidden sm:block text-xs text-slate-400 font-medium">
+                                    5 insights assigned
+                                </span>
+                                <button class="text-slate-300 cursor-not-allowed" title="Cannot remove owner">
+                                    <i class="ph-fill ph-lock-key text-lg"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="member-row px-6 py-5 flex items-center justify-between group">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-sm border border-indigo-100">
+                                    SC
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-2">
+                                        <h4 class="text-sm font-bold text-charcoal">Sarah Chen</h4>
+                                        <span class="text-[10px] font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-100">Editor</span>
+                                    </div>
+                                    <p class="text-xs text-slate-500">sarah@lunr.io</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-6">
+                                <span class="hidden sm:block text-xs text-slate-400 font-medium">
+                                    2 insights assigned
+                                </span>
+                                <div class="relative group/menu">
+                                    <button class="text-slate-400 hover:text-charcoal transition-colors p-1 rounded">
+                                        <i class="ph-bold ph-dots-three text-xl"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="member-row px-6 py-5 flex items-center justify-between group bg-slate-50/30">
+                            <div class="flex items-center gap-4 opacity-70">
+                                <div class="w-10 h-10 rounded-full bg-white border border-dashed border-slate-300 flex items-center justify-center text-slate-400 font-bold text-sm">
+                                    AV
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-2">
+                                        <h4 class="text-sm font-bold text-slate-600">Akash Verma</h4>
+                                        <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">Pending</span>
+                                    </div>
+                                    <p class="text-xs text-slate-400">akash@lunr.io</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <button class="text-xs font-semibold text-mint-600 hover:text-mint-700 transition-colors">
+                                    Resend Invite
+                                </button>
+                                <button class="text-slate-400 hover:text-red-500 transition-colors p-1 rounded">
+                                    <i class="ph-bold ph-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <aside class="lg:col-span-1 space-y-6">
+                
+                <div class="glass-card p-6 rounded-xl">
+                    <h3 class="font-heading text-xs font-bold text-slate-400 uppercase tracking-wide mb-4 flex items-center gap-2">
+                        <i class="ph-fill ph-identification-badge"></i>
+                        Role Permissions
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex gap-3">
+                            <div class="mt-0.5 w-1.5 h-1.5 rounded-full bg-mint-500 shrink-0"></div>
+                            <div>
+                                <span class="block text-xs font-bold text-charcoal">Owner</span>
+                                <span class="text-[10px] text-slate-500 leading-snug block">Full access. Can manage billing and delete workspace.</span>
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <div class="mt-0.5 w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0"></div>
+                            <div>
+                                <span class="block text-xs font-bold text-charcoal">Editor</span>
+                                <span class="text-[10px] text-slate-500 leading-snug block">Can create insights, update roadmap, and assign owners.</span>
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <div class="mt-0.5 w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0"></div>
+                            <div>
+                                <span class="block text-xs font-bold text-charcoal">Viewer</span>
+                                <span class="text-[10px] text-slate-500 leading-snug block">Read-only access to dashboard and trends.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass-card p-6 rounded-xl border-l-4 border-l-mint-500">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-heading text-xs font-bold text-charcoal uppercase tracking-wide">
+                            Insight Ownership
+                        </h3>
+                        <a href="#" class="text-[10px] font-bold text-mint-600 hover:text-mint-700">View Roadmap →</a>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-2 rounded hover:bg-white/50 transition-colors cursor-pointer group">
+                            <span class="text-xs font-medium text-slate-600 group-hover:text-charcoal truncate max-w-[140px]">Dark Mode</span>
+                            <div class="flex items-center gap-1.5 bg-mint-50 px-1.5 py-0.5 rounded border border-mint-100">
+                                <div class="w-4 h-4 rounded-full bg-mint-200 text-[8px] font-bold text-mint-700 flex items-center justify-center">TB</div>
+                                <span class="text-[10px] text-mint-700 font-medium">Tejas</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-2 rounded hover:bg-white/50 transition-colors cursor-pointer group">
+                            <span class="text-xs font-medium text-slate-600 group-hover:text-charcoal truncate max-w-[140px]">Mobile Login Bug</span>
+                            <div class="flex items-center gap-1.5 bg-indigo-50 px-1.5 py-0.5 rounded border border-indigo-100">
+                                <div class="w-4 h-4 rounded-full bg-indigo-200 text-[8px] font-bold text-indigo-700 flex items-center justify-center">SC</div>
+                                <span class="text-[10px] text-indigo-700 font-medium">Sarah</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-2 rounded hover:bg-white/50 transition-colors cursor-pointer group opacity-75">
+                            <span class="text-xs font-medium text-slate-500 truncate max-w-[140px]">CSV Export</span>
+                            <span class="text-[10px] text-slate-400 italic">Unassigned</span>
+                        </div>
+                    </div>
+                </div>
+
+            </aside>
+
+        </div>
+
+        <div class="mt-12 text-center border-t border-slate-200/60 pt-8 max-w-lg mx-auto">
+            <p class="text-xs text-slate-400 leading-relaxed">
+                <strong class="text-slate-500">Working solo?</strong> You can still assign insights to yourself to track your own progress. 
+                Invite teammates later as you scale.
+            </p>
+        </div>
+
+    </main>
+
+</body>
+</html>
