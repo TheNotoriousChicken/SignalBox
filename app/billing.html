@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignalBox - Billing</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mint: { 50: '#F2FBF7', 100: '#E6F8EF', 200: '#D1FAE5', 500: '#10B981', 600: '#059669', 700: '#047857' },
+                        charcoal: '#1E293B',
+                        slate: '#64748B',
+                        indigo: { 50: '#EEF2FF', 600: '#4F46E5' },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 30px rgba(0, 0, 0, 0.03)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02)',
+                        'lift': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            /* Calm Mint Fog Gradient */
+            background: radial-gradient(circle at 50% -20%, #E6F8EF 0%, #F8FAFC 60%, #ffffff 100%);
+            min-height: 100vh;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            background: white;
+            border-color: #E2E8F0;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+
+        .dashed-card {
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px dashed #CBD5E1;
+        }
+    </style>
+</head>
+<body class="text-charcoal antialiased selection:bg-mint-200 selection:text-mint-600">
+
+    <nav class="fixed top-0 w-full z-50 glass-nav h-16">
+        <div class="max-w-[1600px] mx-auto px-6 h-full flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <a href="#" class="flex items-center gap-2 font-heading font-bold text-lg tracking-tight text-charcoal">
+                    SignalBox<span class="w-2 h-2 rounded-full bg-mint-500"></span>
+                </a>
+                <div class="h-6 w-px bg-slate-200 hidden sm:block"></div>
+                <button class="hidden sm:flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-charcoal transition-colors">
+                    <div class="w-5 h-5 rounded bg-charcoal text-white flex items-center justify-center text-[10px] font-bold">L</div>
+                    Lunr App
+                    <i class="ph ph-caret-down text-slate-400"></i>
+                </button>
+            </div>
+            <div class="flex items-center gap-6">
+                <button class="text-slate-400 hover:text-charcoal transition-colors relative">
+                    <i class="ph ph-bell text-xl"></i>
+                </button>
+                <button class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-mint-100 border border-mint-200 flex items-center justify-center text-mint-700 text-xs font-bold">TB</div>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-28 pb-20 px-6 max-w-5xl mx-auto">
+
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+            <div>
+                <h1 class="font-heading text-3xl font-bold text-charcoal tracking-tight mb-2">Billing</h1>
+                <p class="text-slate-500 text-lg">
+                    Manage your plan and understand your usage.
+                </p>
+            </div>
+            <div class="flex items-center gap-2 text-xs font-medium text-mint-700 bg-mint-50 px-3 py-1.5 rounded-full border border-mint-200 shadow-sm">
+                <i class="ph-fill ph-sparkle"></i>
+                Early Access — Billing not live yet
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+            
+            <div class="lg:col-span-2 glass-card p-8 rounded-2xl border-mint-200 relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-6">
+                    <span class="text-[10px] uppercase font-bold tracking-wide text-mint-600 bg-mint-50 px-2 py-1 rounded border border-mint-100">Current Plan</span>
+                </div>
+
+                <h2 class="font-heading text-2xl font-bold text-charcoal mb-1">Early Access</h2>
+                <div class="flex items-baseline gap-1 mb-6">
+                    <span class="text-3xl font-bold text-charcoal">$0</span>
+                    <span class="text-sm text-slate-500">/ month</span>
+                </div>
+
+                <p class="text-sm text-slate-600 mb-8 border-l-2 border-mint-300 pl-3 leading-relaxed">
+                    You’re part of the early SignalBox cohort. Enjoy full access while we build.
+                    <span class="block mt-1 text-mint-700 font-medium">Early access users will receive preferred pricing for life.</span>
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-5 h-5 rounded-full bg-mint-100 flex items-center justify-center text-mint-600"><i class="ph-bold ph-check text-xs"></i></div>
+                        <span class="text-sm text-charcoal">Unlimited insights</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-5 h-5 rounded-full bg-mint-100 flex items-center justify-center text-mint-600"><i class="ph-bold ph-check text-xs"></i></div>
+                        <span class="text-sm text-charcoal">Unlimited sources</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-5 h-5 rounded-full bg-mint-100 flex items-center justify-center text-mint-600"><i class="ph-bold ph-check text-xs"></i></div>
+                        <span class="text-sm text-charcoal">Weekly summaries</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-5 h-5 rounded-full bg-mint-100 flex items-center justify-center text-mint-600"><i class="ph-bold ph-check text-xs"></i></div>
+                        <span class="text-sm text-charcoal">Roadmap tracking</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-1 glass-card p-6 rounded-2xl flex flex-col justify-between">
+                <div>
+                    <h3 class="text-sm font-bold text-charcoal uppercase tracking-wide mb-6 flex items-center gap-2">
+                        <i class="ph-fill ph-chart-bar text-slate-400"></i> Current Usage
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between items-end mb-1">
+                                <span class="text-sm text-slate-600">Insights tracked</span>
+                                <span class="font-heading font-bold text-charcoal">124</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-1.5 rounded-full">
+                                <div class="bg-slate-400 h-1.5 rounded-full w-[25%] opacity-60"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-end mb-1">
+                                <span class="text-sm text-slate-600">Connected sources</span>
+                                <span class="font-heading font-bold text-charcoal">3</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-1.5 rounded-full">
+                                <div class="bg-slate-400 h-1.5 rounded-full w-[40%] opacity-60"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-end mb-1">
+                                <span class="text-sm text-slate-600">Active apps</span>
+                                <span class="font-heading font-bold text-charcoal">1</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-1.5 rounded-full">
+                                <div class="bg-slate-400 h-1.5 rounded-full w-[10%] opacity-60"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-slate-100 text-center">
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Usage is shown for transparency. <br>
+                        Strict limits do not apply yet.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-16">
+            <div class="flex flex-col md:flex-row md:items-baseline gap-2 mb-6">
+                <h3 class="font-heading text-lg font-bold text-charcoal">Planned pricing</h3>
+                <span class="text-xs text-slate-400 font-medium">(Subject to change)</span>
+                
+                <span class="hidden md:inline text-slate-300 mx-2">|</span>
+                <span class="text-xs text-slate-400">Plans will remain simple. We don’t believe in per-seat chaos.</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="dashed-card p-6 rounded-xl opacity-75">
+                    <h4 class="font-bold text-slate-500 mb-1">Starter</h4>
+                    <p class="text-lg font-bold text-slate-400 mb-4">~$29 <span class="text-xs font-normal">/ mo</span></p>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-4">For solo founders validating ideas.</p>
+                    <ul class="text-xs text-slate-400 space-y-2">
+                        <li>• 1 App</li>
+                        <li>• 2 Sources</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card p-6 rounded-xl border-mint-200 bg-white/60">
+                    <h4 class="font-bold text-mint-700 mb-1">Growth</h4>
+                    <p class="text-lg font-bold text-charcoal mb-4">~$79 <span class="text-xs font-normal text-slate-500">/ mo</span></p>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">For small teams building rapidly.</p>
+                    <ul class="text-xs text-slate-500 space-y-2 font-medium">
+                        <li>• 3 Apps</li>
+                        <li>• Unlimited Sources</li>
+                        <li>• Team Roles</li>
+                    </ul>
+                </div>
+
+                <div class="dashed-card p-6 rounded-xl opacity-75">
+                    <h4 class="font-bold text-slate-500 mb-1">Scale</h4>
+                    <p class="text-lg font-bold text-slate-400 mb-4">~$199 <span class="text-xs font-normal">/ mo</span></p>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-4">For established products with volume.</p>
+                    <ul class="text-xs text-slate-400 space-y-2">
+                        <li>• Unlimited Apps</li>
+                        <li>• Priority Support</li>
+                        <li>• API Access</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p class="text-center text-xs text-slate-400 mt-6 italic">
+                Pricing tiers will evolve based on feedback from early users like you.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+            
+            <div class="glass-card p-8 rounded-2xl flex flex-col items-center justify-center text-center bg-slate-50/50">
+                <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 mb-4">
+                    <i class="ph-fill ph-lock-key text-xl"></i>
+                </div>
+                <h3 class="font-bold text-charcoal text-lg mb-2">Billing isn’t enabled yet</h3>
+                <p class="text-sm text-slate-500 max-w-xs mx-auto mb-6">
+                    You cannot enter a credit card right now. We will notify you at least 14 days before any charges would apply.
+                </p>
+                <button class="px-5 py-2 rounded-lg border border-slate-300 text-slate-500 text-sm font-semibold hover:bg-transparent cursor-not-allowed opacity-75 flex items-center gap-2">
+                    <i class="ph-bold ph-lock-key"></i>
+                    Get notified when billing launches
+                </button>
+            </div>
+
+            <div class="glass-card p-8 rounded-2xl border-mint-200">
+                <h3 class="font-heading text-lg font-bold text-charcoal mb-4 flex items-center gap-2">
+                    <i class="ph-fill ph-handshake text-mint-500"></i> Our Promise
+                </h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <i class="ph-bold ph-check text-mint-600 mt-0.5"></i>
+                        <p class="text-sm text-slate-600"><strong>No surprise charges.</strong> We will never charge a card without explicit consent.</p>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="ph-bold ph-check text-mint-600 mt-0.5"></i>
+                        <p class="text-sm text-slate-600"><strong>No retroactive billing.</strong> Your past usage during early access is on the house.</p>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="ph-bold ph-check text-mint-600 mt-0.5"></i>
+                        <p class="text-sm text-slate-600"><strong>Transparent limits.</strong> You will always see your usage before any limits are enforced.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mt-16 mb-8 text-center">
+            <p class="text-xs text-slate-400 hover:text-slate-500 transition-colors cursor-help">
+                Questions about pricing? Just reply to our emails — it’s a real human.
+            </p>
+        </div>
+
+    </main>
+
+</body>
+</html>
