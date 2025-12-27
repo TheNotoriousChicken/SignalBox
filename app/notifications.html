@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignalBox - Notifications</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mint: { 50: '#F2FBF7', 100: '#E6F8EF', 200: '#D1FAE5', 500: '#10B981', 600: '#059669', 700: '#047857' },
+                        charcoal: '#1E293B',
+                        slate: '#64748B',
+                        indigo: { 50: '#EEF2FF', 600: '#4F46E5' },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 30px rgba(0, 0, 0, 0.03)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02)',
+                        'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+                        'toggle': '0 2px 4px rgba(0,0,0,0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            /* Calm Mint Fog Gradient */
+            background: radial-gradient(circle at 50% -20%, #E6F8EF 0%, #F8FAFC 60%, #ffffff 100%);
+            min-height: 100vh;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            background: white;
+            border-color: #E2E8F0;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Toggle Switch Styling */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #10B981;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #10B981;
+        }
+        
+        /* Custom Checkbox */
+        .custom-checkbox:checked {
+            background-color: #10B981;
+            border-color: #10B981;
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+        }
+    </style>
+</head>
+<body class="text-charcoal antialiased selection:bg-mint-200 selection:text-mint-600">
+
+    <nav class="fixed top-0 w-full z-50 glass-nav h-16">
+        <div class="max-w-[1600px] mx-auto px-6 h-full flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <a href="#" class="flex items-center gap-2 font-heading font-bold text-lg tracking-tight text-charcoal">
+                    SignalBox<span class="w-2 h-2 rounded-full bg-mint-500"></span>
+                </a>
+                <div class="h-6 w-px bg-slate-200 hidden sm:block"></div>
+                <button class="hidden sm:flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-charcoal transition-colors">
+                    <div class="w-5 h-5 rounded bg-charcoal text-white flex items-center justify-center text-[10px] font-bold">L</div>
+                    Lunr App
+                    <i class="ph ph-caret-down text-slate-400"></i>
+                </button>
+            </div>
+            <div class="flex items-center gap-6">
+                <button class="text-mint-600 hover:text-mint-700 transition-colors relative">
+                    <i class="ph-fill ph-bell text-xl"></i>
+                    <span class="absolute top-0 right-0 w-2 h-2 bg-orange-500 rounded-full border border-white"></span>
+                </button>
+                <button class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-mint-100 border border-mint-200 flex items-center justify-center text-mint-700 text-xs font-bold">TB</div>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-28 pb-20 px-6 max-w-6xl mx-auto">
+
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+            <div>
+                <h1 class="font-heading text-3xl font-bold text-charcoal tracking-tight mb-2">Notifications</h1>
+                <p class="text-slate-500 text-lg">
+                    Control how and when SignalBox gets your attention.
+                </p>
+            </div>
+            <div class="flex items-center gap-2 text-xs font-medium text-mint-700 bg-mint-50 px-3 py-1.5 rounded-full border border-mint-200 shadow-sm">
+                <div class="w-1.5 h-1.5 rounded-full bg-mint-500 animate-pulse"></div>
+                Notifications enabled
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+            
+            <div class="lg:col-span-2 space-y-8">
+                
+                <div class="space-y-4">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wide px-1">What to notify</h3>
+                    
+                    <div class="glass-card p-5 rounded-xl flex items-center justify-between group">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center text-lg border border-orange-100">
+                                <i class="ph-fill ph-chart-line-up"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-charcoal text-sm">Insight Spike</h4>
+                                <p class="text-xs text-slate-500 mt-1">When a topic starts accelerating unusually fast.</p>
+                            </div>
+                        </div>
+                        <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" role="switch" aria-label="Toggle Insight Spike notifications" name="toggle" id="toggle1" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer shadow-toggle transition-all duration-300 left-0 checked:left-5 top-0.5 checked:border-mint-500" checked/>
+                            <label for="toggle1" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-200 cursor-pointer transition-colors duration-300 checked:bg-mint-500"></label>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-5 rounded-xl flex items-center justify-between group">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-red-50 text-red-600 flex items-center justify-center text-lg border border-red-100">
+                                <i class="ph-fill ph-warning-circle"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-charcoal text-sm">Critical Issues</h4>
+                                <p class="text-xs text-slate-500 mt-1">Severe issues impacting usage, revenue, or logins.</p>
+                            </div>
+                        </div>
+                        <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" role="switch" aria-label="Toggle Critical Issue notifications" name="toggle" id="toggle2" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer shadow-toggle transition-all duration-300 left-0 checked:left-5 top-0.5 checked:border-mint-500" checked/>
+                            <label for="toggle2" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-200 cursor-pointer transition-colors duration-300 checked:bg-mint-500"></label>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-5 rounded-xl flex items-center justify-between group">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center text-lg border border-indigo-100">
+                                <i class="ph-fill ph-newspaper"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-charcoal text-sm">Weekly Summary</h4>
+                                <p class="text-xs text-slate-500 mt-1">A calm weekly overview of what changed in your feedback.</p>
+                            </div>
+                        </div>
+                        <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" role="switch" aria-label="Toggle Weekly Summary notifications" name="toggle" id="toggle3" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer shadow-toggle transition-all duration-300 left-0 checked:left-5 top-0.5 checked:border-mint-500" checked/>
+                            <label for="toggle3" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-200 cursor-pointer transition-colors duration-300 checked:bg-mint-500"></label>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-5 rounded-xl flex items-center justify-between group opacity-90 hover:opacity-100">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-lg border border-slate-200">
+                                <i class="ph-fill ph-git-commit"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-charcoal text-sm">Roadmap Changes</h4>
+                                <p class="text-xs text-slate-500 mt-1">When an insight is marked planned, shipped, or ignored.</p>
+                            </div>
+                        </div>
+                        <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" role="switch" aria-label="Toggle Roadmap Change notifications" name="toggle" id="toggle4" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer shadow-toggle transition-all duration-300 left-0 checked:left-5 top-0.5 checked:border-mint-500" />
+                            <label for="toggle4" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-200 cursor-pointer transition-colors duration-300 checked:bg-mint-500"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-xl">
+                    <h3 class="text-sm font-bold text-charcoal mb-4">Delivery Channels</h3>
+                    <div class="space-y-4">
+                        <label class="flex items-center justify-between cursor-pointer group">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded bg-slate-50 flex items-center justify-center text-slate-500 group-hover:bg-mint-50 group-hover:text-mint-600 transition-colors">
+                                    <i class="ph-fill ph-envelope-simple"></i>
+                                </div>
+                                <span class="text-sm text-charcoal font-medium">Email Digest</span>
+                            </div>
+                            <input type="checkbox" aria-label="Enable Email notifications" class="custom-checkbox w-5 h-5 rounded border-slate-300 focus:ring-mint-500 text-mint-600 transition-all cursor-pointer" checked>
+                        </label>
+                        
+                        <label class="flex items-center justify-between cursor-pointer group">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded bg-slate-50 flex items-center justify-center text-slate-500 group-hover:bg-mint-50 group-hover:text-mint-600 transition-colors">
+                                    <i class="ph-fill ph-bell-simple"></i>
+                                </div>
+                                <span class="text-sm text-charcoal font-medium">In-App Alerts</span>
+                            </div>
+                            <input type="checkbox" aria-label="Enable In-App notifications" class="custom-checkbox w-5 h-5 rounded border-slate-300 focus:ring-mint-500 text-mint-600 transition-all cursor-pointer" checked>
+                        </label>
+                    </div>
+                    <p class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-400 flex items-center gap-1.5">
+                        <i class="ph-fill ph-check-circle text-mint-500"></i>
+                        You’ll never receive duplicate notifications for the same event.
+                    </p>
+                </div>
+
+                <div class="glass-card p-6 rounded-xl border border-dashed border-slate-300 bg-white/40">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                        <div>
+                            <h4 class="text-sm font-bold text-charcoal">Quiet Hours</h4>
+                            <p class="text-xs text-slate-500 mt-0.5">Pause notifications during focus time.</p>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white px-2 py-1 rounded border border-slate-200">
+                            <select class="text-xs font-semibold text-charcoal bg-transparent focus:outline-none cursor-pointer">
+                                <option>10:00 PM</option>
+                            </select>
+                            <span class="text-xs text-slate-400">to</span>
+                            <select class="text-xs font-semibold text-charcoal bg-transparent focus:outline-none cursor-pointer">
+                                <option>08:00 AM</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-sm font-bold text-charcoal mb-3">Frequency</h4>
+                        <div class="flex gap-2">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="freq" class="peer sr-only">
+                                <span class="px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-medium text-slate-500 peer-checked:bg-mint-50 peer-checked:text-mint-700 peer-checked:border-mint-200 hover:bg-white transition-all">Real-time</span>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="freq" class="peer sr-only" checked>
+                                <span class="px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-medium text-slate-500 peer-checked:bg-mint-50 peer-checked:text-mint-700 peer-checked:border-mint-200 hover:bg-white transition-all">Batched (Recommended)</span>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="freq" class="peer sr-only">
+                                <span class="px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-medium text-slate-500 peer-checked:bg-mint-50 peer-checked:text-mint-700 peer-checked:border-mint-200 hover:bg-white transition-all">Weekly Only</span>
+                            </label>
+                        </div>
+                        <p class="mt-2 text-[10px] text-slate-400">Most teams prefer batched alerts to avoid constant interruptions.</p>
+                    </div>
+                    
+                    <p class="mt-4 text-[10px] text-slate-400 flex items-center gap-1">
+                        <i class="ph-fill ph-info"></i> Urgent alerts (Critical Issues) may bypass quiet hours.
+                    </p>
+                </div>
+
+            </div>
+
+            <aside class="lg:col-span-1 space-y-6 lg:sticky lg:top-24">
+                
+                <div>
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wide mb-3 px-1">Preview</h3>
+                    <div class="relative bg-white rounded-xl shadow-lg border border-slate-100 p-4 transform scale-100 hover:scale-[1.02] transition-transform duration-300">
+                        <div class="absolute -top-3 left-4 bg-slate-100 text-slate-500 text-[9px] uppercase font-bold px-2 py-0.5 rounded border border-slate-200">
+                            Example Notification
+                        </div>
+
+                        <div class="flex items-start gap-3 mt-1">
+                            <div class="w-8 h-8 rounded bg-mint-100 text-mint-600 flex items-center justify-center shrink-0">
+                                <i class="ph-fill ph-chart-line-up"></i>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-start w-full gap-2">
+                                    <h4 class="text-xs font-bold text-charcoal">Dark Mode requests spiking</h4>
+                                    <span class="text-[10px] text-slate-400 whitespace-nowrap">2m ago</span>
+                                </div>
+                                <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                                    Volume increased by 28% this week. Primary source: Discord.
+                                </p>
+                                <div class="mt-2 flex gap-2">
+                                    <span class="w-4 h-4 rounded bg-slate-100 flex items-center justify-center text-[10px] text-slate-500"><i class="ph-fill ph-envelope-simple"></i></span>
+                                    <span class="w-4 h-4 rounded bg-slate-100 flex items-center justify-center text-[10px] text-slate-500"><i class="ph-fill ph-app-window"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center text-[10px] text-slate-400 mt-2">How it looks in-app</p>
+                </div>
+
+                <div class="glass-card p-6 rounded-xl border-l-4 border-l-mint-500">
+                    <div class="flex items-center gap-2 mb-3 text-xs font-bold uppercase tracking-wider text-slate-400">
+                        <i class="ph-fill ph-heart text-mint-500"></i>
+                        Our Philosophy
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                        We believe most SaaS tools are too noisy. SignalBox is designed to be quiet by default.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start gap-2">
+                            <i class="ph-bold ph-check text-mint-500 text-xs mt-0.5"></i>
+                            <span class="text-xs text-slate-500">SignalBox sends fewer notifications than Intercom or Slack.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="ph-bold ph-check text-mint-500 text-xs mt-0.5"></i>
+                            <span class="text-xs text-slate-500">We prioritize batching over real-time interruption.</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
