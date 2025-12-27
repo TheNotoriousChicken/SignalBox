@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignalBox - Connect Integrations</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mint: { 50: '#F2FBF7', 100: '#E6F8EF', 200: '#D1FAE5', 500: '#10B981', 600: '#059669' },
+                        charcoal: '#1E293B',
+                        slate: '#64748B',
+                        indigo: { 50: '#EEF2FF', 600: '#4F46E5' },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 30px rgba(0, 0, 0, 0.03)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02)',
+                        'glow': '0 0 20px rgba(16, 185, 129, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            /* Calm Mint Fog Gradient */
+            background: radial-gradient(circle at 50% -20%, #E6F8EF 0%, #F8FAFC 60%, #ffffff 100%);
+            min-height: 100vh;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Checkmark Animation for Connected State */
+        @keyframes scaleIn {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .check-anim {
+            animation: scaleIn 0.3s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="text-charcoal antialiased selection:bg-mint-200 selection:text-mint-600">
+
+    <nav class="fixed top-0 w-full z-50 glass-nav h-16">
+        <div class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <a href="#" class="flex items-center gap-2 font-heading font-bold text-lg tracking-tight text-charcoal">
+                    SignalBox<span class="w-2 h-2 rounded-full bg-mint-500"></span>
+                </a>
+                <span class="text-slate-300">/</span>
+                <span class="text-sm font-medium text-slate-600">Lunr App</span>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-mint-100 border border-mint-200 flex items-center justify-center text-mint-700 text-xs font-bold">
+                        TB
+                    </div>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-32 px-6 max-w-6xl mx-auto">
+
+        <div class="text-center mb-10 max-w-2xl mx-auto">
+            <h1 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-4">
+                Connect your feedback sources
+            </h1>
+            <p class="text-slate-500 text-lg mb-4">
+                SignalBox works best when it can see where users talk to you.
+            </p>
+            
+            <div class="inline-flex items-center gap-4 px-4 py-2 bg-white/60 border border-slate-200 rounded-full text-xs font-semibold text-slate-600 shadow-sm backdrop-blur-sm">
+                <span class="flex items-center gap-1.5"><i class="ph-fill ph-lock-key text-mint-600"></i> Read-only access</span>
+                <span class="w-1 h-1 rounded-full bg-slate-300"></span>
+                <span class="flex items-center gap-1.5"><i class="ph-fill ph-plugs text-mint-600"></i> Disconnect anytime</span>
+            </div>
+
+            <div class="text-xs text-slate-400 mt-4 font-medium uppercase tracking-wide">
+                Step 2 of 3 · Connect sources
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            
+            <div class="glass-card p-6 rounded-xl border-mint-200 bg-mint-50/30 relative overflow-hidden group">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-12 h-12 bg-white rounded-lg border border-slate-100 flex items-center justify-center shadow-sm">
+                        <i class="ph-fill ph-envelope-simple text-2xl text-red-500"></i>
+                    </div>
+                    <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-100">
+                        Recommended
+                    </span>
+                </div>
+                <h3 class="font-heading font-bold text-charcoal text-lg mb-1">Gmail / Workspace</h3>
+                <p class="text-sm text-slate-500 mb-6 leading-relaxed">
+                    Imports threads tagged "Feedback" or sent to support@ addresses.
+                </p>
+                <button class="w-full py-2 rounded-lg bg-white border border-mint-200 text-mint-700 font-semibold text-sm shadow-sm flex items-center justify-center gap-2 cursor-default">
+                    <i class="ph-bold ph-check check-anim"></i> Connected
+                </button>
+            </div>
+
+            <div class="glass-card p-6 rounded-xl group hover:border-indigo-200 hover:bg-white transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-12 h-12 bg-indigo-50 rounded-lg border border-indigo-100 flex items-center justify-center shadow-sm">
+                        <i class="ph-fill ph-discord-logo text-2xl text-indigo-500"></i>
+                    </div>
+                    <span class="inline-flex items-center gap-1 px-2 py-1 rounded text-[10px] font-bold bg-slate-50 text-slate-500 border border-slate-200">
+                        Not connected
+                    </span>
+                </div>
+                <h3 class="font-heading font-bold text-charcoal text-lg mb-1">Discord</h3>
+                <p class="text-sm text-slate-500 mb-6 leading-relaxed">
+                    Monitors specific channels (e.g. #feature-requests) for trends.
+                </p>
+                <button class="w-full py-2 rounded-lg bg-white border border-slate-200 text-slate-700 font-semibold text-sm shadow-sm hover:border-indigo-300 hover:text-indigo-600 transition-colors">
+                    Connect
+                </button>
+            </div>
+
+            <div class="glass-card p-6 rounded-xl group hover:border-blue-200 hover:bg-white transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-12 h-12 bg-blue-50 rounded-lg border border-blue-100 flex items-center justify-center shadow-sm">
+                        <i class="ph-fill ph-chat-circle-text text-2xl text-blue-500"></i>
+                    </div>
+                    <span class="inline-flex items-center gap-1 px-2 py-1 rounded text-[10px] font-bold bg-slate-50 text-slate-500 border border-slate-200">
+                        Not connected
+                    </span>
+                </div>
+                <h3 class="font-heading font-bold text-charcoal text-lg mb-1">Intercom</h3>
+                <p class="text-sm text-slate-500 mb-6 leading-relaxed">
+                    Syncs conversations rated "Negative" or tagged with specific labels.
+                </p>
+                <button class="w-full py-2 rounded-lg bg-white border border-slate-200 text-slate-700 font-semibold text-sm shadow-sm hover:border-blue-300 hover:text-blue-600 transition-colors">
+                    Connect
+                </button>
+            </div>
+
+            <div class="glass-card p-6 rounded-xl group hover:border-green-200 hover:bg-white transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-12 h-12 bg-emerald-50 rounded-lg border border-emerald-100 flex items-center justify-center shadow-sm">
+                        <i class="ph-fill ph-lifebuoy text-2xl text-emerald-600"></i>
+                    </div>
+                    <span class="inline-flex items-center gap-1 px-2 py-1 rounded text-[10px] font-bold bg-slate-50 text-slate-500 border border-slate-200">
+                        Not connected
+                    </span>
+                </div>
+                <h3 class="font-heading font-bold text-charcoal text-lg mb-1">Zendesk</h3>
+                <p class="text-sm text-slate-500 mb-6 leading-relaxed">
+                    Analyzes solved tickets for recurring keywords and pain points.
+                </p>
+                <button class="w-full py-2 rounded-lg bg-white border border-slate-200 text-slate-700 font-semibold text-sm shadow-sm hover:border-emerald-300 hover:text-emerald-600 transition-colors">
+                    Connect
+                </button>
+            </div>
+
+            <div class="glass-card p-6 rounded-xl border-dashed border-slate-300 bg-slate-50/50 opacity-70">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-12 h-12 bg-white rounded-lg border border-slate-200 flex items-center justify-center shadow-sm grayscale opacity-50">
+                        <i class="ph-fill ph-slack-logo text-2xl"></i>
+                    </div>
+                    <span class="inline-flex items-center gap-1 px-2 py-1 rounded text-[10px] font-bold bg-slate-200 text-slate-500 border border-slate-300">
+                        Coming soon
+                    </span>
+                </div>
+                <h3 class="font-heading font-bold text-slate-500 text-lg mb-1">Slack</h3>
+                <p class="text-sm text-slate-400 mb-6 leading-relaxed">
+                    Capture feedback directly from internal Slack discussions.
+                </p>
+                <button disabled class="w-full py-2 rounded-lg bg-slate-100 border border-slate-200 text-slate-400 font-semibold text-sm cursor-not-allowed">
+                    Notify me
+                </button>
+            </div>
+
+            <div class="glass-card p-6 rounded-xl group hover:border-slate-300 hover:bg-white transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-12 h-12 bg-slate-50 rounded-lg border border-slate-100 flex items-center justify-center shadow-sm">
+                        <i class="ph-fill ph-file-csv text-2xl text-slate-600"></i>
+                    </div>
+                    <span class="inline-flex items-center gap-1 px-2 py-1 rounded text-[10px] font-bold bg-slate-50 text-slate-500 border border-slate-200">
+                        Manual
+                    </span>
+                </div>
+                <h3 class="font-heading font-bold text-charcoal text-lg mb-1">CSV Import</h3>
+                <p class="text-sm text-slate-500 mb-6 leading-relaxed">
+                    Upload a one-time export from any other tool you use.
+                </p>
+                <button class="w-full py-2 rounded-lg bg-white border border-slate-200 text-slate-700 font-semibold text-sm shadow-sm hover:border-slate-300 hover:text-charcoal transition-colors">
+                    Upload File
+                </button>
+            </div>
+
+        </div>
+
+        <div class="text-center text-sm text-slate-500 mb-12 max-w-lg mx-auto leading-relaxed">
+            <i class="ph-fill ph-sparkle text-mint-500 mr-1"></i>
+            Once connected, SignalBox will analyze recent conversations and surface your first insights in under a minute.
+        </div>
+
+        <div class="max-w-4xl mx-auto bg-mint-50/50 border border-mint-100 rounded-2xl p-6 md:p-8">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 rounded-full bg-mint-100 flex items-center justify-center text-mint-600">
+                    <i class="ph-fill ph-shield-check text-lg"></i>
+                </div>
+                <h3 class="font-heading font-bold text-charcoal">Your data is safe with SignalBox</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="flex items-start gap-3">
+                    <i class="ph-bold ph-check text-mint-500 mt-1"></i>
+                    <div>
+                        <h4 class="text-sm font-bold text-charcoal">No Messaging</h4>
+                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">We connect via read-only APIs. We cannot send emails or replies.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i class="ph-bold ph-check text-mint-500 mt-1"></i>
+                    <div>
+                        <h4 class="text-sm font-bold text-charcoal">No Training</h4>
+                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">We do not use your private customer data to train public AI models.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i class="ph-bold ph-check text-mint-500 mt-1"></i>
+                    <div>
+                        <h4 class="text-sm font-bold text-charcoal">No Deletion</h4>
+                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">Your original data remains untouched in your source platforms.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-md border-t border-slate-200 py-4 px-6 z-40">
+            <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="text-xs text-slate-500 hidden md:block">
+                    <i class="ph-fill ph-info text-slate-400 mr-1"></i>
+                    Syncing starts immediately after connection.
+                </div>
+                
+                <div class="flex items-center gap-6 w-full md:w-auto justify-between md:justify-end">
+                    <button class="text-sm font-medium text-slate-400 hover:text-charcoal transition-colors">
+                        Skip for now
+                    </button>
+                    
+                    <div class="flex flex-col items-end">
+                        <button class="px-8 py-3 rounded-full bg-mint-500 text-white font-semibold hover:bg-mint-600 transition-all shadow-lg shadow-mint-500/20 active:scale-95 flex items-center gap-2">
+                            Continue to insights
+                            <i class="ph-bold ph-arrow-right"></i>
+                        </button>
+                        <p class="text-[10px] text-slate-400 mt-2 text-right">
+                            You can add or remove integrations anytime.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>
