@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignalBox - Your Apps</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mint: { 50: '#F2FBF7', 100: '#E6F8EF', 200: '#D1FAE5', 500: '#10B981', 600: '#059669' },
+                        charcoal: '#1E293B',
+                        slate: '#64748B',
+                        indigo: { 50: '#EEF2FF', 600: '#4F46E5' },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 30px rgba(0, 0, 0, 0.03)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02)',
+                        'hover': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            /* Calm Mint Fog Gradient */
+            background: radial-gradient(circle at 50% -20%, #E6F8EF 0%, #F8FAFC 60%, #ffffff 100%);
+            min-height: 100vh;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .app-card {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .app-card:hover {
+            background: white;
+            border-color: #D1FAE5; /* mint-200 */
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+
+        .new-app-card {
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px dashed #CBD5E1;
+            transition: all 0.2s ease;
+        }
+
+        .new-app-card:hover {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: #10B981; /* mint-500 */
+            border-style: solid;
+        }
+    </style>
+</head>
+<body class="text-charcoal antialiased selection:bg-mint-200 selection:text-mint-600">
+
+    <nav class="fixed top-0 w-full z-50 glass-nav h-16">
+        <div class="max-w-6xl mx-auto px-6 h-full flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <a href="#" class="flex items-center gap-2 font-heading font-bold text-lg tracking-tight text-charcoal">
+                    SignalBox<span class="w-2 h-2 rounded-full bg-mint-500"></span>
+                </a>
+                
+                <div class="h-5 w-px bg-slate-200"></div>
+                
+                <div class="flex items-center gap-2 text-sm font-medium text-slate-600">
+                    <div class="w-5 h-5 rounded bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">T</div>
+                    Tejas Workspace
+                </div>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <button class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-mint-100 border border-mint-200 flex items-center justify-center text-mint-700 text-xs font-bold">
+                        TB
+                    </div>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-6 max-w-6xl mx-auto">
+
+        <div class="mb-10">
+            <h1 class="font-heading text-3xl font-bold text-charcoal tracking-tight mb-2">Your Apps</h1>
+            <p class="text-slate-500 text-lg">
+                Each app has its own feedback sources and insights.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            
+            <a href="dashboard.html" class="app-card block p-6 rounded-xl relative group ring-2 ring-mint-500/10 hover:ring-mint-500/30">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-12 h-12 bg-charcoal rounded-lg flex items-center justify-center text-white font-heading font-bold text-lg shadow-sm">
+                        L
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-mint-50 text-mint-700 border border-mint-100">
+                        <span class="w-1.5 h-1.5 rounded-full bg-mint-500 animate-pulse"></span> Active
+                    </span>
+                </div>
+                
+                <h3 class="font-heading font-bold text-charcoal text-lg mb-1 group-hover:text-mint-600 transition-colors">Lunr App</h3>
+                <p class="text-xs text-slate-400 mb-6">Last synced 2 hours ago</p>
+
+                <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                    <div class="flex -space-x-2">
+                        <div class="w-6 h-6 rounded-full bg-white border border-slate-100 flex items-center justify-center text-indigo-500 shadow-sm z-10" title="Discord">
+                            <i class="ph-fill ph-discord-logo"></i>
+                        </div>
+                        <div class="w-6 h-6 rounded-full bg-white border border-slate-100 flex items-center justify-center text-red-500 shadow-sm z-20" title="Email">
+                            <i class="ph-fill ph-envelope-simple"></i>
+                        </div>
+                    </div>
+                    <div class="text-xs font-bold text-mint-600 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                        Open Dashboard <i class="ph-bold ph-caret-right"></i>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="app-card block p-6 rounded-xl relative group">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-heading font-bold text-lg shadow-sm">
+                        S
+                    </div>
+                    </div>
+                
+                <h3 class="font-heading font-bold text-charcoal text-lg mb-1 group-hover:text-mint-600 transition-colors">SignalBox Marketing</h3>
+                <p class="text-xs text-slate-400 mb-6">Last synced 3 days ago</p>
+
+                <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                    <div class="flex -space-x-2">
+                        <div class="w-6 h-6 rounded-full bg-white border border-slate-100 flex items-center justify-center text-blue-500 shadow-sm z-10" title="Intercom">
+                            <i class="ph-fill ph-chat-circle-text"></i>
+                        </div>
+                    </div>
+                    <div class="text-xs font-medium text-slate-400 group-hover:text-charcoal transition-colors">
+                        View
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="app-card block p-6 rounded-xl relative group opacity-90 hover:opacity-100">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-12 h-12 bg-white border border-slate-200 rounded-lg flex items-center justify-center text-slate-400 font-heading font-bold text-lg shadow-sm">
+                        I
+                    </div>
+                    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-100 text-slate-500 border border-slate-200">
+                        Setup Required
+                    </span>
+                </div>
+                
+                <h3 class="font-heading font-bold text-charcoal text-lg mb-1 group-hover:text-mint-600 transition-colors">Internal Tools</h3>
+                <p class="text-xs text-slate-400 mb-6">No sources connected</p>
+
+                <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                    <div class="text-xs text-slate-300 italic">No data yet</div>
+                    <div class="text-xs font-bold text-slate-600 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                        Finish Setup <i class="ph-bold ph-arrow-right"></i>
+                    </div>
+                </div>
+            </a>
+
+            <button class="new-app-card block p-6 rounded-xl flex flex-col items-center justify-center text-center h-full min-h-[200px] group cursor-pointer">
+                <div class="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 mb-4 group-hover:text-mint-600 group-hover:border-mint-200 transition-colors shadow-sm">
+                    <i class="ph-bold ph-plus text-xl"></i>
+                </div>
+                <h3 class="font-heading font-bold text-charcoal text-base mb-1">Create new app</h3>
+                <p class="text-xs text-slate-500 max-w-[200px] leading-relaxed">Start collecting feedback for a new product or website.</p>
+            </button>
+
+        </div>
+
+        <div class="text-center border-t border-slate-200/60 pt-8">
+            <p class="text-xs text-slate-400 flex items-center justify-center gap-1.5">
+                <i class="ph-fill ph-info"></i>
+                You can manage sources and insights separately for each app.
+            </p>
+        </div>
+
+    </main>
+
+</body>
+</html>
