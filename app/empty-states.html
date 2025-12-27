@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignalBox - Empty & Error States</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mint: { 50: '#F2FBF7', 100: '#E6F8EF', 200: '#D1FAE5', 500: '#10B981', 600: '#059669', 700: '#047857' },
+                        charcoal: '#1E293B',
+                        slate: '#64748B',
+                        indigo: { 50: '#EEF2FF', 600: '#4F46E5' },
+                        orange: { 50: '#FFF7ED', 600: '#EA580C' },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 30px rgba(0, 0, 0, 0.03)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02)',
+                        'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            /* Calm Mint Fog Gradient */
+            background: radial-gradient(circle at 50% -20%, #E6F8EF 0%, #F8FAFC 60%, #ffffff 100%);
+            min-height: 100vh;
+        }
+
+        /* REUSABLE COMPONENT CLASS */
+        .empty-state-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            border-radius: 1rem; /* rounded-2xl */
+            padding: 2.5rem; /* p-10 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100%;
+            min-height: 320px;
+            transition: all 0.2s ease;
+        }
+        
+        .empty-state-card:hover {
+            border-color: #E2E8F0;
+            background: rgba(255, 255, 255, 0.95);
+        }
+    </style>
+</head>
+<body class="text-charcoal antialiased selection:bg-mint-200 selection:text-mint-600 p-10">
+
+    <div class="max-w-7xl mx-auto">
+        
+        <h1 class="font-heading text-2xl font-bold text-charcoal mb-8 text-center">UI Empty & Error States</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <div class="empty-state-card">
+                <div class="w-14 h-14 rounded-full bg-mint-50 border border-mint-100 flex items-center justify-center text-mint-600 mb-6 shadow-sm">
+                    <i class="ph-fill ph-sparkle text-2xl"></i>
+                </div>
+                <h3 class="font-heading text-lg font-bold text-charcoal mb-2">Ready to find insights?</h3>
+                <p class="text-sm text-slate-500 leading-relaxed max-w-xs mx-auto mb-8">
+                    SignalBox needs to read your feedback channels to start finding patterns. It usually takes less than a minute.
+                </p>
+                <button class="px-5 py-2.5 rounded-lg bg-mint-500 text-white text-sm font-semibold hover:bg-mint-600 transition-colors shadow-sm shadow-mint-500/20 active:scale-95">
+                    Connect a source
+                </button>
+            </div>
+
+            <div class="empty-state-card">
+                <div class="w-14 h-14 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 mb-6">
+                    <i class="ph-fill ph-plugs text-2xl"></i>
+                </div>
+                <h3 class="font-heading text-lg font-bold text-charcoal mb-2">Connect your feedback sources</h3>
+                <p class="text-sm text-slate-500 leading-relaxed max-w-xs mx-auto mb-8">
+                    SignalBox works best when connected to where your users talk—like Gmail, Discord, or Slack.
+                </p>
+                <button class="px-5 py-2.5 rounded-lg border border-slate-200 text-charcoal text-sm font-semibold hover:bg-white hover:border-slate-300 transition-colors bg-white/50">
+                    Add your first source
+                </button>
+            </div>
+
+            <div class="empty-state-card">
+                <div class="w-14 h-14 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 mb-6">
+                    <i class="ph-fill ph-chat-teardrop-text text-2xl"></i>
+                </div>
+                <h3 class="font-heading text-lg font-bold text-charcoal mb-2">Your inbox is empty</h3>
+                <p class="text-sm text-slate-500 leading-relaxed max-w-xs mx-auto mb-8">
+                    New feedback will automatically appear here as it arrives from your connected sources.
+                </p>
+                <button class="text-sm font-medium text-mint-600 hover:text-mint-700 transition-colors flex items-center gap-1.5">
+                    Check integrations <i class="ph-bold ph-arrow-right"></i>
+                </button>
+            </div>
+
+            <div class="empty-state-card">
+                <div class="w-14 h-14 rounded-full bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-500 mb-6">
+                    <i class="ph-fill ph-map-trifold text-2xl"></i>
+                </div>
+                <h3 class="font-heading text-lg font-bold text-charcoal mb-2">Your roadmap is clear</h3>
+                <p class="text-sm text-slate-500 leading-relaxed max-w-xs mx-auto mb-8">
+                    Items appear here when you promote them from your Insights dashboard.
+                </p>
+                <button class="px-5 py-2.5 rounded-lg bg-charcoal text-white text-sm font-semibold hover:bg-slate-800 transition-colors shadow-lg shadow-charcoal/10">
+                    Review insights
+                </button>
+            </div>
+
+            <div class="empty-state-card">
+                <div class="w-14 h-14 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 mb-6">
+                    <i class="ph-fill ph-chart-line-up text-2xl"></i>
+                </div>
+                <h3 class="font-heading text-lg font-bold text-charcoal mb-2">Collecting trend data</h3>
+                <p class="text-sm text-slate-500 leading-relaxed max-w-xs mx-auto mb-6">
+                    We need a bit more volume over time to show meaningful patterns. Check back in a few days.
+                </p>
+                <div class="flex items-center gap-2 text-xs font-medium text-mint-600 bg-mint-50 px-3 py-1.5 rounded-full border border-mint-100">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-mint-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-mint-500"></span>
+                    </span>
+                    Recording signals...
+                </div>
+            </div>
+
+            <div class="empty-state-card">
+                <div class="w-14 h-14 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 mb-6">
+                    <i class="ph-fill ph-eye-slash text-2xl"></i>
+                </div>
+                <h3 class="font-heading text-lg font-bold text-charcoal mb-2">Low confidence signal</h3>
+                <p class="text-sm text-slate-500 leading-relaxed max-w-xs mx-auto mb-8">
+                    This insight has a confidence score of <strong>42%</strong>, which is below your threshold setting.
+                </p>
+                <button class="px-5 py-2.5 rounded-lg border border-slate-200 text-slate-600 text-sm font-semibold hover:bg-slate-50 hover:text-charcoal transition-colors">
+                    View anyway
+                </button>
+            </div>
+
+            <div class="empty-state-card border-orange-100 bg-orange-50/30 hover:bg-orange-50/50">
+                <div class="w-14 h-14 rounded-full bg-orange-50 border border-orange-100 flex items-center justify-center text-orange-500 mb-6">
+                    <i class="ph-fill ph-cloud-warning text-2xl"></i>
+                </div>
+                <h3 class="font-heading text-lg font-bold text-charcoal mb-2">Sync paused temporarily</h3>
+                <p class="text-sm text-slate-500 leading-relaxed max-w-xs mx-auto mb-8">
+                    We couldn't reach Gmail. This is usually a temporary connection issue. <br>
+                    <span class="text-xs mt-2 block opacity-70">Last successful sync: 2 hours ago</span>
+                </p>
+                <button class="px-5 py-2.5 rounded-lg bg-white border border-slate-200 text-charcoal text-sm font-semibold hover:border-orange-200 hover:text-orange-700 transition-colors shadow-sm">
+                    Retry sync
+                </button>
+            </div>
+
+            <div class="empty-state-card opacity-75 hover:opacity-100 transition-opacity">
+                <div class="w-14 h-14 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 mb-6">
+                    <i class="ph-fill ph-archive-box text-2xl"></i>
+                </div>
+                <h3 class="font-heading text-lg font-bold text-charcoal mb-2">Insight archived</h3>
+                <p class="text-sm text-slate-500 leading-relaxed max-w-xs mx-auto mb-8">
+                    This item has been hidden from your main dashboard view.
+                </p>
+                <button class="text-sm font-medium text-slate-500 hover:text-charcoal transition-colors underline decoration-slate-300 underline-offset-4">
+                    View archived insights
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
