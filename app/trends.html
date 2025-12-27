@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignalBox - Trends</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mint: { 50: '#F2FBF7', 100: '#E6F8EF', 200: '#D1FAE5', 500: '#10B981', 600: '#059669' },
+                        charcoal: '#1E293B',
+                        slate: '#64748B',
+                        indigo: { 50: '#EEF2FF', 600: '#4F46E5' },
+                        orange: { 50: '#FFF7ED', 600: '#EA580C' },
+                        red: { 50: '#FEF2F2', 600: '#DC2626' },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 30px rgba(0, 0, 0, 0.03)',
+                        'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02)',
+                        'lift': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            /* Calm Mint Fog Gradient */
+            background: radial-gradient(circle at 50% -20%, #E6F8EF 0%, #F8FAFC 40%, #ffffff 80%);
+            min-height: 100vh;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+        }
+
+        .trend-row {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+            transition: all 0.2s ease;
+        }
+
+        .trend-row:hover {
+            background: white;
+            border-color: #CBD5E1;
+            transform: translateX(2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+        }
+    </style>
+</head>
+<body class="text-charcoal antialiased selection:bg-mint-200 selection:text-mint-600">
+
+    <nav class="fixed top-0 w-full z-50 glass-nav h-16">
+        <div class="max-w-[1600px] mx-auto px-6 h-full flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <a href="#" class="flex items-center gap-2 font-heading font-bold text-lg tracking-tight text-charcoal">
+                    SignalBox<span class="w-2 h-2 rounded-full bg-mint-500"></span>
+                </a>
+                <div class="h-6 w-px bg-slate-200 hidden sm:block"></div>
+                <button class="hidden sm:flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-charcoal transition-colors">
+                    <div class="w-5 h-5 rounded bg-charcoal text-white flex items-center justify-center text-[10px] font-bold">L</div>
+                    Lunr App
+                    <i class="ph ph-caret-down text-slate-400"></i>
+                </button>
+            </div>
+            <div class="flex items-center gap-6">
+                <button class="text-slate-400 hover:text-charcoal transition-colors">
+                    <i class="ph ph-bell text-xl"></i>
+                </button>
+                <button class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-mint-100 border border-mint-200 flex items-center justify-center text-mint-700 text-xs font-bold">TB</div>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-20 px-6 max-w-5xl mx-auto">
+
+        <header class="flex items-end justify-between mb-8">
+            <div>
+                <h1 class="font-heading text-2xl font-bold text-charcoal">Trends</h1>
+                <p class="text-slate-500 text-sm mt-1">How user feedback is shifting over time.</p>
+            </div>
+            
+            <div class="flex items-center gap-2 bg-white px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-medium text-slate-600 shadow-subtle cursor-pointer hover:border-slate-300 transition-colors">
+                <i class="ph ph-calendar-blank"></i>
+                Last 30 days
+                <i class="ph ph-caret-down text-slate-400 ml-1"></i>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+            <div class="glass-panel p-4 rounded-xl flex flex-col justify-between h-24">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Total Themes</span>
+                <div class="flex items-baseline gap-2">
+                    <span class="text-2xl font-heading font-bold text-charcoal">12</span>
+                    <span class="text-xs text-slate-400">active</span>
+                </div>
+            </div>
+            <div class="glass-panel p-4 rounded-xl flex flex-col justify-between h-24">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">New Themes</span>
+                <div class="flex items-baseline gap-2">
+                    <span class="text-2xl font-heading font-bold text-charcoal">3</span>
+                    <span class="text-xs text-mint-600 font-medium">+1 this week</span>
+                </div>
+            </div>
+            <div class="glass-panel p-4 rounded-xl flex flex-col justify-between h-24 border-l-4 border-l-orange-400 bg-white">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Rising</span>
+                <div class="flex items-baseline gap-2">
+                    <span class="text-2xl font-heading font-bold text-charcoal">4</span>
+                    <span class="text-xs text-orange-600 font-medium">Accelerating</span>
+                </div>
+            </div>
+            <div class="glass-panel p-4 rounded-xl flex flex-col justify-between h-24 border-l-4 border-l-slate-300 bg-white/40">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Declining</span>
+                <div class="flex items-baseline gap-2">
+                    <span class="text-2xl font-heading font-bold text-charcoal">2</span>
+                    <span class="text-xs text-slate-400">Stable</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+            
+            <div class="lg:col-span-2 space-y-4">
+                <div class="flex items-center justify-between px-1 mb-2">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wide">Theme Velocity</h3>
+                    <span class="text-[10px] text-slate-400 bg-slate-100 px-2 py-0.5 rounded">Sorted by Impact</span>
+                </div>
+
+                <div class="trend-row p-4 rounded-xl flex items-center justify-between cursor-pointer group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-orange-50 border border-orange-100 flex items-center justify-center text-orange-600">
+                            <i class="ph-bold ph-trend-up"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-charcoal text-sm group-hover:text-mint-600 transition-colors">Dark Mode</h4>
+                            <div class="flex items-center gap-2 mt-0.5">
+                                <span class="text-xs text-orange-600 font-medium">+32% volume</span>
+                                <span class="text-[10px] text-slate-400">• 92% match</span>
+                            </div>
+                        </div>
+                    </div>
+                    <i class="ph-bold ph-caret-right text-slate-300 group-hover:text-mint-500 transition-colors"></i>
+                </div>
+
+                <div class="trend-row p-4 rounded-xl flex items-center justify-between cursor-pointer group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-red-50 border border-red-100 flex items-center justify-center text-red-600">
+                            <i class="ph-bold ph-warning"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-charcoal text-sm group-hover:text-mint-600 transition-colors">Mobile Login Issues</h4>
+                            <div class="flex items-center gap-2 mt-0.5">
+                                <span class="text-xs text-red-600 font-medium">New Spike</span>
+                                <span class="text-[10px] text-slate-400">• Seen in 3 sources</span>
+                            </div>
+                        </div>
+                    </div>
+                    <i class="ph-bold ph-caret-right text-slate-300 group-hover:text-mint-500 transition-colors"></i>
+                </div>
+
+                <div class="trend-row p-4 rounded-xl flex items-center justify-between cursor-pointer group opacity-90">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-500">
+                            <i class="ph-bold ph-minus"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-charcoal text-sm group-hover:text-mint-600 transition-colors">CSV Export</h4>
+                            <div class="flex items-center gap-2 mt-0.5">
+                                <span class="text-xs text-slate-500 font-medium">Stable volume</span>
+                                <span class="text-[10px] text-slate-400">• Consistent for 7 days</span>
+                            </div>
+                        </div>
+                    </div>
+                    <i class="ph-bold ph-caret-right text-slate-300 group-hover:text-mint-500 transition-colors"></i>
+                </div>
+
+                <div class="trend-row p-4 rounded-xl flex items-center justify-between cursor-pointer group opacity-75">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400">
+                            <i class="ph-bold ph-trend-down"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-charcoal text-sm group-hover:text-mint-600 transition-colors">Notification Noise</h4>
+                            <div class="flex items-center gap-2 mt-0.5">
+                                <span class="text-xs text-slate-400 font-medium">-18% WoW</span>
+                                <span class="text-[10px] text-slate-400">• Issue resolving</span>
+                            </div>
+                        </div>
+                    </div>
+                    <i class="ph-bold ph-caret-right text-slate-300 group-hover:text-mint-500 transition-colors"></i>
+                </div>
+
+                <div class="text-center pt-4">
+                    <button class="text-xs font-bold text-slate-400 hover:text-charcoal transition-colors">
+                        View all 12 themes
+                    </button>
+                </div>
+            </div>
+
+            <aside class="lg:col-span-1 space-y-6">
+                
+                <div class="glass-panel p-6 rounded-xl">
+                    <div class="flex items-center gap-2 mb-6 text-xs font-bold uppercase tracking-wider text-slate-400">
+                        <i class="ph-fill ph-users-three"></i>
+                        Segment Focus
+                    </div>
+
+                    <div class="mb-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm font-bold text-indigo-600">Paying Users</span>
+                            <span class="text-[10px] bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded border border-indigo-100">High Priority</span>
+                        </div>
+                        <div class="bg-white/50 p-3 rounded-lg border border-indigo-100/50">
+                            <span class="block text-[10px] text-slate-400 uppercase font-bold mb-1">Top Request</span>
+                            <div class="text-sm font-semibold text-charcoal">CSV Export</div>
+                            <p class="text-[10px] text-slate-400 mt-1">Mentioned in 80% of upgrade tickets.</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm font-bold text-slate-500">Free Users</span>
+                        </div>
+                        <div class="bg-white/50 p-3 rounded-lg border border-slate-100">
+                            <span class="block text-[10px] text-slate-400 uppercase font-bold mb-1">Top Request</span>
+                            <div class="text-sm font-semibold text-charcoal">Dark Mode</div>
+                            <p class="text-[10px] text-slate-400 mt-1">Primary driver of Discord chatter.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-xl border border-dashed border-slate-300 text-center bg-slate-50/30">
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        Paying users are focused on <strong>utility</strong>, while free users are focused on <strong>UI/UX</strong> this week.
+                    </p>
+                </div>
+
+            </aside>
+
+        </div>
+
+        <div class="mt-12 text-center border-t border-slate-200/60 pt-8">
+            <p class="text-xs text-slate-400 flex items-center justify-center gap-1.5">
+                <i class="ph-fill ph-clock-counter-clockwise"></i>
+                Trends update automatically as new feedback arrives.
+            </p>
+        </div>
+
+    </main>
+
+</body>
+</html>
