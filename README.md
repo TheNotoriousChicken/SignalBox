@@ -1,191 +1,113 @@
-SignalBox
+<div align="center">
 
-Know what your users want — without digging through feedback.
+  # 📶 SignalBox
 
-SignalBox is a calm, founder-first feedback intelligence tool that turns scattered user feedback into clear, actionable product insights.
+  ### Know what your users want — without digging through feedback.
 
-Instead of manually reading emails, Discord messages, and support tickets, SignalBox automatically detects patterns, highlights what’s rising, and connects feedback directly to product decisions.
+  <p>
+    <b>A calm, founder-first feedback intelligence tool.</b><br>
+    Turn scattered user feedback into clear, actionable product insights.
+  </p>
 
-🚀 What SignalBox Does
+  ![Status](https://img.shields.io/badge/Status-Early_Prototype-blueviolet?style=flat-square)
+  ![Stack](https://img.shields.io/badge/Stack-HTML_|_Tailwind_|_Phosphor-06b6d4?style=flat-square)
+  ![License](https://img.shields.io/badge/License-Proprietary-gray?style=flat-square)
 
-SignalBox helps SaaS founders and product teams:
+  [Features](#-key-features) • [Tech Stack](#-tech-stack) • [Roadmap](#-roadmap) • [Contact](#-contact)
 
-Collect feedback from multiple sources (Email, Discord, Intercom, etc.)
+</div>
 
-Automatically group similar feedback into Insights
+---
 
-Detect trends, spikes, and declining issues
+## 🚀 The Problem vs. The Signal
+Most teams already have the data. **They just don’t have clarity.**
 
-Track which insights turn into roadmap decisions
+Founders are drowning in qualitative feedback across emails, Discord, and support tickets.
+SignalBox helps you answer:
+> * "What should we build next?"
+> * "Is this issue actually important or just loud?"
+> * "Are paying users asking for different things than free users?"
 
-Stay informed without notification overload
+It is built for **signal, not noise**.
 
-It’s built for signal, not noise.
+---
 
-🧠 The Core Idea
+## 📸 Interface Preview
+<div align="center">
+  <img src="https://placehold.co/800x400?text=Place+Your+Dashboard+Screenshot+Here" alt="SignalBox Dashboard" width="100%">
+</div>
 
-Most teams already have the data.
-They just don’t have clarity.
+---
 
-SignalBox answers questions like:
+## ✨ Key Features
+This repository features a **complete Frontend MVP** designed to validate UX flows and product direction.
 
-What should we build next?
+### 🧠 Feedback Intelligence
+* **Insights Dashboard:** Automatically detected patterns with confidence scoring.
+* **Drill-Down:** One-click navigation from a high-level trend to the specific user message that sparked it.
+* **Trends:** Track rising vs. declining topics and week-over-week changes.
 
-Is this issue actually important or just loud?
+### 📥 Inbox & Management
+* **Unified Feed:** Chronological feed of feedback (Email, Discord, Intercom, etc.).
+* **Smart Grouping:** Attach raw messages to existing insights.
+* **User Segmentation:** See if paying users want different features than free users.
 
-Are paying users asking for different things than free users?
+### 🗺️ Actionable Roadmap
+* **Traceability:** Kanban-style view linked directly to real user evidence.
+* **Status Tracking:** From `Insight` → `Planned` → `Shipped`.
+* **Focus:** Designed to prevent feature creep.
 
-Which feedback turned into shipped features?
+---
 
-✨ Key Features (Frontend MVP)
-Insights Dashboard
+## 🧩 Who This Is For
+SignalBox is built for the **builders**.
 
-List of detected insights
+- [x] Indie SaaS Founders
+- [x] Early-stage Startups
+- [x] Small Product Teams
+- [ ] *Not for: Enterprise bureaucracy or ticket-heavy workflows.*
 
-Confidence scoring
+---
 
-Filters by source, time, and status
+## 🛠 Tech Stack (Current MVP)
+This version is a **Frontend-only MVP**. The UI is intentionally complete to validate the product before backend implementation.
 
-One-click drill-down into evidence
+* **Structure:** HTML5
+* **Styling:** [Tailwind CSS](https://tailwindcss.com/) (Utility-first)
+* **Icons:** [Phosphor Icons](https://phosphoricons.com/) (Clean, consistent iconography)
+* **Backend:** *None yet (Coming soon via Supabase/Firebase)*
 
-Insight Detail View
+---
 
-Timeline of real user messages
+## 🗺️ Roadmap
+We are currently in the **Early Prototype / UI MVP** phase.
 
-Source breakdown
+- [x] **Phase 1:** Complete UI/UX Design & Frontend implementation (HTML/Tailwind).
+- [ ] **Phase 2:** Convert frontend to React.
+- [ ] **Phase 3:** Add mock API responses for better demos.
+- [ ] **Phase 4:** Backend implementation (Supabase/Firebase).
+- [ ] **Phase 5:** Stripe Billing & Public Beta.
 
-Decision status (Planned / In Progress / Shipped / Ignored)
+---
 
-Internal notes and ownership
+## 🔐 Philosophy & Privacy
+We believe in "Calm Software."
 
-Inbox (Raw Feedback)
+1.  **Data Ownership:** Your data belongs to you.
+2.  **No AI Training:** We do not train public AI models on your private user feedback.
+3.  **Quiet by Default:** Notifications are designed to inform, not distract.
 
-Chronological feed of incoming feedback
+---
 
-Source, sentiment, and tags
+## 📬 Contact
+SignalBox is actively being designed and iterated.
 
-Attach messages to existing insights
-
-Roadmap
-
-Kanban-style view driven by real feedback
-
-Traceability from insight → decision
-
-Encourages focus, not feature creep
-
-Trends
-
-Rising vs declining topics
-
-Week-over-week changes
-
-Paying vs free user differences
-
-Integrations Setup
-
-Connect feedback sources per app
-
-Sync status and health indicators
-
-Notifications
-
-Smart alerts (spikes, critical issues)
-
-Weekly summaries
-
-Quiet by default philosophy
-
-Billing & Settings
-
-Transparent pricing philosophy
-
-Early-access friendly
-
-Data privacy controls
-
-Empty & Error States
-
-Thoughtful UX for first-time users
-
-Clear next steps at every stage
-
-🧩 Who This Is For
-
-Indie SaaS founders
-
-Early-stage startups
-
-Small product teams
-
-Teams drowning in “qualitative feedback”
-
-Not built for:
-
-Enterprise bureaucracy
-
-Ticket-heavy workflows
-
-Noisy dashboards
-
-🛠 Tech Stack (Current)
-
-This repository contains a frontend-only MVP.
-
-HTML
-
-Tailwind CSS
-
-Phosphor Icons
-
-No backend (yet)
-
-The UI is intentionally complete to validate:
-
-Product direction
-
-UX flows
-
-Investor demos
-
-User feedback
-
-🗺️ Roadmap (High Level)
-
-Next steps (planned):
-
-Convert frontend to React
-
-Add mock API responses
-
-Implement backend (likely Supabase/Firebase)
-
-Enable real integrations
-
-Stripe billing
-
-Public beta
-
-🔐 Data & Privacy Philosophy
-
-Your data belongs to you
-
-No training public AI models on private feedback
-
-Transparent retention and export policies
-
-Calm, respectful notifications
-
-🧪 Status
-
-Early prototype / UI MVP
-
-This project is actively being designed and iterated.
-Backend functionality is not implemented yet.
-
-📬 Contact
-
-Built by Tejas
-Founder, SignalBox
+**Built by Tejas**
+*Founder, SignalBox*
 
 If you’re a founder drowning in feedback — this is for you.
+
+---
+<div align="center">
+  <sub>© SignalBox. All rights reserved.</sub>
+</div>
