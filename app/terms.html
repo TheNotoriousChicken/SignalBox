@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | SignalBox</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- THEME VARIABLES --- */
+        :root {
+            --bg-color: #f8fafc;
+            --text-main: #475569;
+            --text-heading: #0f172a;
+            --text-muted: #94a3b8;
+            --primary: #10b981; /* Emerald 500 */
+            --primary-dark: #059669;
+            --primary-light: #ecfdf5; 
+            --accent-blue: #eff6ff;
+            --accent-blue-border: #dbeafe;
+            --accent-blue-text: #1e40af;
+            
+            --border-color: rgba(226, 232, 240, 0.8);
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+        }
+
+        /* --- BASE STYLES --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            /* Subtle Mesh Gradient */
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.06) 0%, transparent 50%);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-heading);
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        a { text-decoration: none; color: inherit; transition: color 0.2s; }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+            align-items: l;
+        }
+        
+        .nav-container {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        /* --- COMPONENT: NAVBAR --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: var(--text-heading);
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .nav-links a { color: var(--text-main); opacity: 0.8; }
+        .nav-links a:hover { color: var(--primary); opacity: 1; }
+        .nav-links a.active { color: var(--primary); opacity: 1; }
+
+        /* --- COMPONENT: HEADER --- */
+        header {
+            padding-top: 140px;
+            padding-bottom: 60px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        header p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* --- COMPONENT: CARD --- */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 56px;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 80px;
+        }
+
+        .section { margin-bottom: 48px; }
+        .section:last-child { margin-bottom: 0; }
+
+        .section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section p { margin-bottom: 16px; }
+
+        /* --- LIST STYLING --- */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            background-color: var(--primary);
+            border-radius: 50%;
+        }
+
+        strong { color: var(--text-heading); font-weight: 600; }
+
+        /* --- EARLY ACCESS BOX --- */
+        .ea-box {
+            background: var(--accent-blue);
+            border: 1px solid var(--accent-blue-border);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 0 0 40px 0;
+            display: flex;
+            gap: 16px;
+            align-items: start;
+        }
+
+        .ea-icon {
+            color: var(--accent-blue-text);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .ea-content h3 {
+            color: var(--text-heading);
+            font-size: 1.125rem;
+            margin-bottom: 4px;
+        }
+
+        .ea-content p {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding-bottom: 40px;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: underline;
+            text-decoration-color: rgba(16, 185, 129, 0.3);
+            text-underline-offset: 4px;
+        }
+        
+        footer a:hover { text-decoration-color: var(--primary); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 640px) {
+            header h1 { font-size: 2.25rem; }
+            .glass-card { padding: 24px; }
+            .nav-links { display: none; }
+            .ea-box { flex-direction: column; gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256"><path d="M232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-32,0a72,72,0,1,0-72,72A72.08,72.08,0,0,0,200,128Zm-56,32H112a8,8,0,0,1,0-16h32a8,8,0,0,1,0,16Zm16-32H96a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Zm-16-32H112a8,8,0,0,1,0-16h32a8,8,0,0,1,0,16Z"></path></svg>
+                </div>
+                SignalBox
+            </div>
+            <div class="nav-links">
+                <a href="#">Product</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="#" class="active">Terms</a>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <h1>Terms of Service</h1>
+            <p>Simple rules for using SignalBox.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="glass-card">
+            
+            <div class="section">
+                <p style="font-size: 1.125rem;">
+                    Welcome to SignalBox. By creating an account or using our services, you agree to these terms. We’ve kept them as short and clear as possible because we’d rather be building features than writing legal text.
+                </p>
+            </div>
+
+            <div class="ea-box">
+                <div class="ea-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-24,0a80,80,0,1,0-80,80A80.09,80.09,0,0,0,208,128Zm-88-32V80a8,8,0,0,1,16,0v16a8,8,0,0,1-16,0Zm16,40a8,8,0,0,1-8,8H120a8,8,0,0,1,0-16h8a8,8,0,0,1,8,8v32a8,8,0,0,1-8,8H120a8,8,0,0,1,0-16h8a8,8,0,0,1,8,8Z"></path></svg>
+                </div>
+                <div class="ea-content">
+                    <h3>Early Access Notice</h3>
+                    <p>
+                        SignalBox is currently in <strong>Beta</strong>. This means we are actively developing the product. Features may change, interfaces may update, and occasional bugs may appear. We promise to communicate major changes transparently.
+                    </p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>1. Your Data</h2>
+                <p>
+                    <strong>You own your data.</strong> We claim no intellectual property rights over the feedback, emails, or content you import into SignalBox.
+                </p>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">
+                    You grant us a limited license to process this data solely for the purpose of providing the service (e.g., displaying it on your dashboard, generating insights). We do not resell your data.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>2. Your Responsibilities</h2>
+                <ul>
+                    <li>You are responsible for keeping your account credentials secure.</li>
+                    <li>You agree not to use SignalBox for any illegal purposes or to harass others.</li>
+                    <li>You must be human. Accounts registered by "bots" or automated methods are not permitted.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>3. Service Availability</h2>
+                <p>
+                    We strive for high uptime, but as an early-stage product, we do not offer a Service Level Agreement (SLA) at this time. We reserve the right to suspend the service temporarily for maintenance or security reasons.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>4. Limitation of Liability</h2>
+                <p>
+                    To the maximum extent permitted by law, SignalBox is provided "as is" and "as available."
+                </p>
+                <div style="background: #f1f5f9; border-left: 4px solid #cbd5e1; padding: 12px 16px; margin-top: 12px; font-style: italic; color: #64748b;">
+                    In plain English: We are not liable for any damages (including lost profits or data) that might occur from using our tool. Please use regular backups for your critical business data.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>5. Cancellation & Termination</h2>
+                <p>
+                    <strong>You can leave anytime.</strong> You may cancel your account at any time via the dashboard. Upon cancellation, your data will be queued for deletion according to our Privacy Policy.
+                </p>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">
+                    We reserve the right to suspend accounts that violate these terms, specifically regarding abuse or fraudulent activity.
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>Last updated: December 2025</p>
+        <p style="margin-top: 8px;">Questions? <a href="mailto:support@signalbox.dev">support@signalbox.dev</a></p>
+        <div style="margin-top: 24px; font-size: 0.75rem; opacity: 0.5;">
+            &copy; SignalBox. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
