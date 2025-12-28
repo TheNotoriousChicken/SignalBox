@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignalBox - Page Not Found</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mint: { 50: '#F2FBF7', 100: '#E6F8EF', 200: '#D1FAE5', 500: '#10B981', 600: '#059669', 700: '#047857' },
+                        charcoal: '#1E293B',
+                        slate: '#64748B',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 30px rgba(0, 0, 0, 0.03)',
+                        'card': '0 20px 40px -10px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background: radial-gradient(circle at 50% -20%, #E6F8EF 0%, #F8FAFC 60%, #ffffff 100%);
+            min-height: 100vh;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.05);
+        }
+        /* Hide scrollbar */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+    </style>
+</head>
+<body class="text-charcoal antialiased flex flex-col min-h-screen">
+
+    <nav class="w-full px-6 py-6 flex justify-between items-center absolute top-0 z-10">
+        <a href="login.html" class="flex items-center gap-2 font-heading font-bold text-lg tracking-tight text-charcoal hover:opacity-80 transition-opacity">
+            SignalBox<span class="w-2 h-2 rounded-full bg-mint-500"></span>
+        </a>
+    </nav>
+
+    <main class="flex-1 flex items-center justify-center p-6 relative">
+        
+        <div class="w-full max-w-md mx-auto">
+            
+            <div class="glass-card rounded-2xl p-8 sm:p-10 text-center relative overflow-hidden">
+                
+                <div class="relative mb-8 flex justify-center">
+                    <div class="w-16 h-16 rounded-full bg-mint-50 border border-mint-100 flex items-center justify-center text-mint-500 shadow-sm">
+                        <i class="ph-fill ph-compass text-3xl"></i>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <h1 class="font-heading text-2xl font-bold text-charcoal mb-2">Page not found</h1>
+                    <p class="text-slate-500 text-sm leading-relaxed max-w-xs mx-auto">
+                        The page you’re looking for doesn’t exist or has been moved.
+                    </p>
+                </div>
+
+                <a href="dashboard.html" class="block w-full py-2.5 rounded-lg bg-mint-500 hover:bg-mint-600 text-white font-semibold text-sm shadow-sm transition-all duration-200 transform active:scale-[0.98] mb-4">
+                    Go to dashboard
+                </a>
+
+                <a href="login.html" class="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-charcoal transition-colors group">
+                    Back to login
+                </a>
+
+                <div class="mt-8 pt-6 border-t border-slate-100">
+                    <p class="text-[11px] text-slate-400">
+                        If this keeps happening, please <a href="#" class="underline hover:text-slate-500">contact support</a>.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
